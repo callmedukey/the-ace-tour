@@ -1,0 +1,279 @@
+{
+  "Metadata": {
+    "title": "Ace Tour",
+    "description": "Your Travel Partner",
+    "keywords": "Ace Tour, Travel, Western USA, Shuttle Service, MICE Solutions"
+  },
+  "Header": {
+    "menu": {
+      "home": "Home",
+      "travel-packages": "Travel Packages",
+      "shuttle-service": "Shuttle Service",
+      "mice-solutions": "MICE Solutions",
+      "support": "Support",
+      "la-departure": "LA Departure",
+      "vegas-departure": "Las Vegas Departure",
+      "semi-package": "Semi-Package"
+    }
+  },
+
+  "HeroSection": {
+    "title": "Journey Through the Most Iconic Destinations in the <important>Western USA</important>",
+    "description": "Bridging Korea and the USA with Unforgettable Travel Experiences",
+    "button": "Begin Your Journey Now"
+  },
+  "OurMission": {
+    "title": "Our mission",
+    "content": "Seamless, Exciting, <important>and</important> Unforgettable – Our Travel Promise",
+    "card1": {
+      "title": "Your Trusted Travel Partner",
+      "content": "From Los Angeles to the Grand Canyon, we specialize in Western USA travel with expert planning and seamless experiences. Let us handle the details while you enjoy the journey."
+    },
+    "card2": {
+      "title": "Personalized & Hassle-Free Tours",
+      "content": "Every traveler is unique. Whether it's a customized LA tour, family vacation, or small group trip, we design experiences tailored to your needs for an unforgettable adventure."
+    },
+    "card3": {
+      "title": "Seamless & Reliable Travel",
+      "content": "From airport pickups to guided Western US sightseeing tours, we ensure stress-free and smooth journeys. Travel confidently with our expertly curated itineraries and local insights."
+    }
+  },
+
+  "HowItWorks": {
+    "badge": "How it works",
+    "title": "Travel With <span>Ease</span>, Explore With <span>Confidence</span>",
+    "secondaryContent": "Navigating the Western USA has never been easier. With The Ace, you'll experience expertly guided adventures, seamless travel, and personalized care—just like traveling with family",
+    "card1": {
+      "title": "Pick Your Perfect Western USA Adventure",
+      "content": "From Los Angeles to the Grand Canyon, choose from a variety of guided tours, semi-packages, and customized trips that fit your travel style."
+    },
+    "card2": {
+      "title": "Travel Comfortably in a Small Group",
+      "content": "Enjoy a stress-free experience with intimate group tours, personalized attention, and expert guides who know Western USA's best-kept secrets."
+    },
+    "card3": {
+      "title": "Explore at Your Own Pace",
+      "content": "Whether you prefer structured itineraries or independent exploration, our tours offer the perfect balance of guided experiences and free time."
+    },
+    "button": {
+      "label": "<important>Upgrade Your Journey</important> – Explore Premium Tours",
+      "link": "/contact"
+    }
+  },
+
+  "UserStories": {
+    "title": "User stories",
+    "description": "Real Experiences, Real Travelers",
+    "story1": {
+      "initial": "K",
+      "name": "Kim*mi",
+      "text": "안녕하세요. 저는 21기 참가자입니다. 우선 9박 11일간 미서부 여행을 잘 마무리 할 수 있게 도와주신 에이스투어 관계자분들과 우리 션가이드님, 그리고 같이 지낸 21기수 분들까지 모두 감사합니다....",
+      "link": "/??"
+    },
+    "story2": {
+      "initial": "G",
+      "name": "Go*Hyeon",
+      "text": "2025년도 20기로 다녀왔습니다. 혹시 미국 서부 여행 계획중이시고 주요 관광지를 모두 방문하면서 자유일정까지 챙길 생각 있으시면 무조건 신청하시는거 추천드릴게요. ✅1.자율성 세미패키지라 전체일정의 90프로....",
+      "link": "/??"
+    },
+    "story3": {
+      "initial": "H",
+      "name": "Haw*hee",
+      "text": " 미국 여행을 하고 싶은데, 처음이라 고민하다가 선택한 마리틀 세미패키지. 여자 4명이 안전하고 즐겁게 여행할 수 있었던 최고의 선택이었습니다. 백가이드님의....",
+      "link": "/??"
+    },
+    "button": {
+      "label": "View all reviews",
+      "link": "/stories"
+    }
+  },
+
+  "HomeEnd": {
+    "title": "Exciting Journeys Start with a Single Click!",
+    "button1": {
+      "label": "Got Questions? We're Here for You!",
+      "link": "/contact"
+    },
+    "button2": {
+      "label": "Book Your Ride & Start Exploring",
+      "link": "/tours"
+    }
+  },
+
+  "TravelPackages": {
+    "badge": "Our premium packages",
+    "title": "Select Your Package",
+    "description": "From fully guided tours to flexible semi-independent adventures, we offer the perfect package tailored to your travel style!",
+    "viewAllButton": "See next package",
+    "laPackages": {
+      "title": "LA Departure",
+      "price": "$599",
+      "features": {
+        "feature1": "Daily departures available",
+        "feature2": "Popular tourist attractions",
+        "feature3": "Professional guide service"
+      },
+      "imageAlt": "LA Package Tour",
+      "button": {
+        "label": "Book now"
+      }
+    },
+    "vegasPackages": {
+      "title": "Las Vegas Departure",
+      "price": "$???",
+      "features": {
+        "feature1": "?????????????????????????",
+        "feature2": "?????????????????????????",
+        "feature3": "?????????????????????????"
+      },
+      "imageAlt": "Vegas Package Tour",
+      "button": {
+        "label": "Book now"
+      }
+    },
+    "semiPackages": {
+      "title": "Semi-Package",
+      "price": "$???",
+      "features": {
+        "feature1": "?????????????????????????",
+        "feature2": "?????????????????????????",
+        "feature3": "?????????????????????????"
+      },
+      "imageAlt": "Semi Package Tour",
+      "button": {
+        "label": "Book now"
+      }
+    }
+  },
+
+  "ShuttleHero": {
+    "badge": "Travel Made Easier!",
+    "title": "Shuttle Service",
+    "description": "Spacious seating, on-time departures, and a reliable shuttle service!Seamlessly travel between LAX, San Diego, and Las Vegas without the hassle of rental cars.",
+    "features": {
+      "feature1": "Scheduled rides | Fast & convenient | Budget-friendly",
+      "feature2": "Easy Booking, Hassle-Free Travel!Start your smooth journey now."
+    }
+  },
+
+  "CardsShuttle": {
+    "title": "Sit Back & Enjoy the Ride",
+    "cards": {
+      "card1": {
+        "content": "No stress, no hassle—just sit back and focus on the journey ahead."
+      },
+      "card2": {
+        "content": "Share laughter and stories with fellow travelers in a comfortable and friendly setting."
+      }
+    }
+  },
+
+  "MiceHero": {
+    "title": "Successful MICE Events in the Western USA: Customized Solutions with The ACE",
+    "cards": {
+      "card1": {
+        "title": "33",
+        "content": "Lorem ipsum dolor sit amet consectetur. Aliquet ipsum vitae eget tellus erat a."
+      },
+      "card2": {
+        "title": "37",
+        "content": "Lorem ipsum dolor sit amet consectetur. Aliquet ipsum vitae eget tellus erat a."
+      },
+      "card3": {
+        "title": "73",
+        "content": "Lorem ipsum dolor sit amet consectetur. Aliquet ipsum vitae eget tellus erat a."
+      }
+    }
+  },
+
+  "Footer": {
+    "newsletter": {
+      "title": "Newsletter",
+      "description": "Sign up for insider perks and exclusive travel promotions tailored for you.",
+      "placeholder": "Your email",
+      "button": "Sign up"
+    },
+    "sitemap": {
+      "title": "Sitemap",
+      "home": "Home",
+      "travelPackages": "Travel Packages",
+      "shuttleBus": "Shuttle Bus",
+      "miceSolutions": "MICE Solutions",
+      "support": "Support"
+    },
+    "contact": {
+      "businessHours": {
+        "title": "Business Hours",
+        "hours": "Mon-Fri: 9:00 AM - 6:00 PM PST"
+      },
+      "email": {
+        "title": "Email",
+        "address": "support@acetravel.com"
+      },
+      "phone": {
+        "title": "Phone",
+        "number": "+1 (800) 123-4567"
+      }
+    },
+    "social": {
+      "title": "Follow Us On"
+    },
+    "legal": {
+      "privacyPolicy": "Privacy Policy",
+      "terms": "Terms and Conditions",
+      "copyright": "The ACE. ©"
+    }
+  },
+
+  "SupportHero": {
+    "title": "How Can We Assist You with Your US Travel?",
+    "cards": {
+      "card1": {
+        "title": "Business Hours",
+        "content": "Mon-Fri: 9:00 AM - 6:00 PM PST"
+      },
+      "card2": {
+        "title": "Email",
+        "content": "support@acetravel.com"
+      },
+      "card3": {
+        "title": "Phone",
+        "content": "+1 (800) 123-4567"
+      }
+    }
+  },
+
+  "SupportFAQ": {
+    "title": "FAQ",
+    "content": "Frequently Asked Questions – US Travel & ACE Tour Information",
+    "cards": {
+      "card1": {
+        "title": "How do I book a shuttle service?",
+        "content": "You can book our shuttle service through our website by using the booking form on our Shuttle Service page. Select your pickup location, destination, date, and the number of passengers. You'll receive a confirmation email with your booking details."
+      },
+      "card2": {
+        "title": "What is your cancellation policy?",
+        "content": "Our standard cancellation policy allows free cancellation up to 24 hours before your scheduled pickup time. Cancellations made within 24 hours of the pickup time may be subject to a cancellation fee."
+      },
+      "card3": {
+        "title": "Do you offer group discounts?",
+        "content": "Yes, we offer special rates for group bookings of 10 or more passengers. Please contact our support team for more information about group rates and arrangements."
+      },
+      "card4": {
+        "title": "What if my flight is delayed?",
+        "content": "We monitor all flight arrivals. If your flight is delayed, we'll adjust your pickup time accordingly at no extra charge. Please make sure to provide your flight details during booking."
+      }
+    }
+  },
+
+  "Index": {
+    "title": "Ace Tour",
+    "description": "Your Travel Partner"
+  },
+
+  "Success": {
+    "title": "Payment Successful!",
+    "message": "Thank you for your booking. We have sent you an email with your booking details.",
+    "close": "Close"
+  }
+}
