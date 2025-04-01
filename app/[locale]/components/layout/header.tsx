@@ -36,6 +36,7 @@ const Header = () => {
   const pathname = usePathname();
   const t = useTranslations("Header");
   const [travelIsOpen, setTravelIsOpen] = useState(false);
+  const [sheetOpen, setSheetOpen] = useState(false);
 
   const links = [
     {
@@ -81,6 +82,11 @@ const Header = () => {
           <Link
             key={link.href}
             href={link.href}
+            onClick={() => {
+              if (isMobile) {
+                setSheetOpen(false);
+              }
+            }}
             className={cn(
               pathname === link.href || pathname.startsWith(link.href)
                 ? "text-highlight-blue"
@@ -150,6 +156,11 @@ const Header = () => {
                       className={cn(
                         pathname.startsWith(child.href) && "text-highlight-blue"
                       )}
+                      onClick={() => {
+                        if (isMobile) {
+                          setSheetOpen(false);
+                        }
+                      }}
                     >
                       {child.label}
                     </Link>
@@ -173,8 +184,8 @@ const Header = () => {
       <nav className="hidden gap-12 font-semibold lg:flex">
         {generateLinks({ isMobile: false })}
       </nav>
-      <LanguageSwitcher />
-      <Sheet>
+      <LanguageSwitcher wrapperClassName="absolute right-4 hidden lg:block" />
+      <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
         <SheetTrigger
           className="lg:hidden ml-auto"
           aria-label="Mobile Menu Trigger"
@@ -188,8 +199,9 @@ const Header = () => {
               This is a Mobile only menu. You can use it to navigate the
               website.
             </SheetDescription>
+            <LanguageSwitcher wrapperClassName="" />
           </SheetHeader>
-          <nav className="flex flex-col gap-4 font-semibold px-6 py-6">
+          <nav className="flex flex-col gap-4 font-semibold px-6 py-6 relative isolate">
             {generateLinks({ isMobile: true })}
           </nav>
         </SheetContent>

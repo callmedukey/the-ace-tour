@@ -6,15 +6,16 @@ import { useLocale } from "next-intl";
 
 import EnglishFlag from "@/public/flags/uk.png";
 import KoreanFlag from "@/public/flags/kr.png";
+import { cn } from "@/lib/cn";
 
-export default function LanguageSwitcher() {
+export default function LanguageSwitcher({wrapperClassName}: { wrapperClassName?: string }) {
   const currentLocale = useLocale();
   const pathname = usePathname();
 
   const isEnglish = currentLocale === "en";
 
   return (
-    <div className="flex items-center space-x-2 absolute right-4">
+    <div className={cn("flex items-center space-x-2", wrapperClassName)}>
       <Link
         href={pathname}
         locale={isEnglish ? "ko" : "en"}
