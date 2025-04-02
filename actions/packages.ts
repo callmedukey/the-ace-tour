@@ -47,9 +47,7 @@ export async function updatePackage(
 
     // Revalidate the packages page to show the updated data
     revalidatePath("/[locale]/admin/packages-setting", "page");
-    revalidatePath("/[locale]/travel-packages/la-departure", "page");
-    revalidatePath("/[locale]/travel-packages/las-vegas-departure", "page");
-    revalidatePath("/[locale]/travel-packages/semi-package", "page");
+    revalidatePath("/[locale]/travel-packages/[package]", "page");
 
     return { success: true };
   } catch (error) {
@@ -111,9 +109,7 @@ export async function uploadPackageImage(
 
     // Revalidate the packages page to show the updated data
     revalidatePath("/[locale]/admin/packages-setting", "page");
-    revalidatePath("/[locale]/travel-packages/la-departure", "page");
-    revalidatePath("/[locale]/travel-packages/las-vegas-departure", "page");
-    revalidatePath("/[locale]/travel-packages/semi-package", "page");
+    revalidatePath("/[locale]/travel-packages/[package]", "page");
 
     return {
       success: true,
