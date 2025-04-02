@@ -10,6 +10,8 @@ export const generateStaticParams = async () => {
   ];
 };
 
+export const revalidate = 604800;
+
 const page = async ({
   params,
 }: {

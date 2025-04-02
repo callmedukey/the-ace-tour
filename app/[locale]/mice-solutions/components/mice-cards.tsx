@@ -68,6 +68,7 @@ export async function MiceCards() {
                     className="object-cover"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     quality={100}
+                    unoptimized
                   />
                 ) : (
                   <div className="w-full h-full bg-gray-600" />

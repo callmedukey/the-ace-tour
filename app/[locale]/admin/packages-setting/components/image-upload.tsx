@@ -39,12 +39,12 @@ export function ImageUpload({ packageId, existingImages }: ImageUploadProps) {
             packageId: packageId,
           },
         ]);
-        
+
         // Reset the form - safely check if currentTarget exists
-        if (e.currentTarget && typeof e.currentTarget.reset === 'function') {
+        if (e.currentTarget && typeof e.currentTarget.reset === "function") {
           e.currentTarget.reset();
         }
-        
+
         // Show success message
         alert("Image uploaded successfully");
       } else {
@@ -68,7 +68,7 @@ export function ImageUpload({ packageId, existingImages }: ImageUploadProps) {
         if (result.success) {
           // Remove the deleted image from the list
           setImages((prev) => prev.filter((img) => img.id !== imageId));
-          
+
           // Show success message
           alert("Image deleted successfully");
         } else {
@@ -87,7 +87,7 @@ export function ImageUpload({ packageId, existingImages }: ImageUploadProps) {
   return (
     <div className="space-y-6">
       <h3 className="text-lg font-medium">Package Images</h3>
-      
+
       {/* Display existing images */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {images.map((image) => (
@@ -97,6 +97,8 @@ export function ImageUpload({ packageId, existingImages }: ImageUploadProps) {
                 src={image.path}
                 alt={image.ENGalt}
                 fill
+                quality={100}
+                unoptimized
                 className="object-cover rounded-md"
               />
             </div>
@@ -118,7 +120,7 @@ export function ImageUpload({ packageId, existingImages }: ImageUploadProps) {
           </div>
         ))}
       </div>
-      
+
       {/* Upload new image form */}
       <form onSubmit={handleUpload} className="border rounded-md p-4">
         <h4 className="text-md font-medium mb-4">Upload New Image</h4>
@@ -144,13 +146,7 @@ export function ImageUpload({ packageId, existingImages }: ImageUploadProps) {
         </div>
         <div className="space-y-2 mb-4">
           <Label htmlFor="file">Image File</Label>
-          <Input
-            id="file"
-            name="file"
-            type="file"
-            accept="image/*"
-            required
-          />
+          <Input id="file" name="file" type="file" accept="image/*" required />
           <p className="text-xs text-gray-500">
             Recommended size: 1200x800 pixels. Max file size: 5MB.
           </p>

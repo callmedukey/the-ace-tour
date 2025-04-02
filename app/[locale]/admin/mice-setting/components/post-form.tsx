@@ -328,6 +328,8 @@ export function PostForm({
                 alt={formData.imgENGAlt}
                 fill
                 className="object-cover rounded-md"
+                quality={100}
+                unoptimized
               />
             </div>
             <div className="text-sm mb-1">
