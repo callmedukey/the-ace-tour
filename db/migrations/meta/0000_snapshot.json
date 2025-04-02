@@ -1,5 +1,5 @@
 {
-  "id": "9ae1291f-0d57-4fab-a456-1a085634f042",
+  "id": "dc41b236-cf68-494d-973c-626cc2c6ebf8",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -101,6 +101,184 @@
         "content": {
           "name": "content",
           "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.mice": {
+      "name": "mice",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "ENGtitle": {
+          "name": "ENGtitle",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "KOtitle": {
+          "name": "KOtitle",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "firstValue": {
+          "name": "firstValue",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "firstValueENGText": {
+          "name": "firstValueENGText",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "firstValueKOText": {
+          "name": "firstValueKOText",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "secondValue": {
+          "name": "secondValue",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "secondValueENGText": {
+          "name": "secondValueENGText",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "secondValueKOText": {
+          "name": "secondValueKOText",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "thirdValue": {
+          "name": "thirdValue",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "thirdValueENGText": {
+          "name": "thirdValueENGText",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "thirdValueKOText": {
+          "name": "thirdValueKOText",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.posts": {
+      "name": "posts",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "ENGtitle": {
+          "name": "ENGtitle",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "KOtitle": {
+          "name": "KOtitle",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ENGcontent": {
+          "name": "ENGcontent",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "KOcontent": {
+          "name": "KOcontent",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "imgPath": {
+          "name": "imgPath",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "imgENGAlt": {
+          "name": "imgENGAlt",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "imgKOAlt": {
+          "name": "imgKOAlt",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "miceId": {
+          "name": "miceId",
+          "type": "uuid",
           "primaryKey": false,
           "notNull": true
         },

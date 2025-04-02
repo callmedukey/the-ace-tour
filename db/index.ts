@@ -8,7 +8,7 @@ import { drizzle } from "drizzle-orm/neon-http";
 
 export const db = drizzle(process.env.DATABASE_URL as string, {
   schema: schemas,
-  logger: true,
+  // logger: true,
 });
 
 export const getDB = async () => {
@@ -29,6 +29,6 @@ export const getDB = async () => {
 
   return drizzle(process.env.DATABASE_URL as string, {
     schema: schemas,
-    logger: true,
+    // logger: true,
   });
 };

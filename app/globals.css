@@ -138,4 +138,14 @@
   .badge-text {
     @apply text-xs sm:text-sm font-medium;
   }
+
+  .mice-values {
+    background: var(
+      --Linear-3,
+      linear-gradient(179deg, rgba(163, 213, 255, 0.2) -17.36%, #1976d2 52.97%)
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }

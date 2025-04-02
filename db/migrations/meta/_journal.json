@@ -5,22 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1743513786699,
-      "tag": "0000_sleepy_matthew_murdock",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1743513833667,
-      "tag": "0001_neat_rogue",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1743513843857,
-      "tag": "0002_white_yellowjacket",
+      "when": 1743555730061,
+      "tag": "0000_calm_toad_men",
       "breakpoints": true
     }
   ]

@@ -8,8 +8,9 @@ import OurMissionSection from "./components/our-mission-section";
 import SecondSVGSeparator from "./components/second-svg-separator";
 import HowItWorksSection from "./components/how-it-works-section";
 import UsersStorySection from "./components/users-story-section";
+import revalidateTimes from "@/lib/revalidateTimes";
 
-export const revalidate = 604800; //7 days in seconds
+export const revalidate = revalidateTimes["7days"];
 
 export async function generateMetadata({
   params,

@@ -1,6 +1,7 @@
 "use client";
 
 import { Link, usePathname } from "@/i18n/navigation";
+
 import Image from "next/image";
 import { useLocale } from "next-intl";
 
@@ -8,7 +9,11 @@ import EnglishFlag from "@/public/flags/uk.png";
 import KoreanFlag from "@/public/flags/kr.png";
 import { cn } from "@/lib/cn";
 
-export default function LanguageSwitcher({wrapperClassName}: { wrapperClassName?: string }) {
+export default function LanguageSwitcher({
+  wrapperClassName,
+}: {
+  wrapperClassName?: string;
+}) {
   const currentLocale = useLocale();
   const pathname = usePathname();
 
