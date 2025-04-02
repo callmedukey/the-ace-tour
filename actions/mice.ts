@@ -63,21 +63,19 @@ export async function updateMice(
 }
 
 // Create a new MICE entry
-export async function createMice(
-  miceData: {
-    ENGtitle: string;
-    KOtitle: string;
-    firstValue: number;
-    firstValueENGText: string;
-    firstValueKOText: string;
-    secondValue: number;
-    secondValueENGText: string;
-    secondValueKOText: string;
-    thirdValue: number;
-    thirdValueENGText: string;
-    thirdValueKOText: string;
-  }
-): Promise<MiceResult> {
+export async function createMice(miceData: {
+  ENGtitle: string;
+  KOtitle: string;
+  firstValue: number;
+  firstValueENGText: string;
+  firstValueKOText: string;
+  secondValue: number;
+  secondValueENGText: string;
+  secondValueKOText: string;
+  thirdValue: number;
+  thirdValueENGText: string;
+  thirdValueKOText: string;
+}): Promise<MiceResult> {
   try {
     const db = await getDB();
 
@@ -127,9 +125,7 @@ export async function deleteMice(id: string): Promise<MiceResult> {
 }
 
 // Create a new post
-export async function createPost(
-  formData: FormData
-): Promise<MiceResult> {
+export async function createPost(formData: FormData): Promise<MiceResult> {
   try {
     const miceId = formData.get("miceId") as string;
     const ENGtitle = formData.get("ENGtitle") as string;
@@ -140,7 +136,16 @@ export async function createPost(
     const imgKOAlt = formData.get("imgKOAlt") as string;
     const file = formData.get("file") as File;
 
-    if (!miceId || !ENGtitle || !KOtitle || !ENGcontent || !KOcontent || !imgENGAlt || !imgKOAlt || !file) {
+    if (
+      !miceId ||
+      !ENGtitle ||
+      !KOtitle ||
+      !ENGcontent ||
+      !KOcontent ||
+      !imgENGAlt ||
+      !imgKOAlt ||
+      !file
+    ) {
       return {
         success: false,
         error: "Missing required fields",
@@ -150,15 +155,21 @@ export async function createPost(
     // Create unique filename
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
-    
+
     // Get file extension
     const originalName = file.name;
     const extension = originalName.split(".").pop();
-    
+
     // Create a unique filename with the original extension
     const filename = `mice-${uuidv4()}.${extension}`;
     const imagePath = `/mice-solutions/${filename}`;
-    const fullPath = join(process.cwd(), "public", "mice-solutions", filename);
+    const fullPath = join(
+      process.cwd(),
+      "public",
+      "uploads",
+      "mice-solutions",
+      filename
+    );
 
     // Write the file to the public directory
     await writeFile(fullPath, buffer);
@@ -270,15 +281,21 @@ export async function updatePostImage(
     // Create unique filename
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
-    
+
     // Get file extension
     const originalName = file.name;
     const extension = originalName.split(".").pop();
-    
+
     // Create a unique filename with the original extension
     const filename = `mice-${uuidv4()}.${extension}`;
     const imagePath = `/mice-solutions/${filename}`;
-    const fullPath = join(process.cwd(), "public", "mice-solutions", filename);
+    const fullPath = join(
+      process.cwd(),
+      "public",
+      "uploads",
+      "mice-solutions",
+      filename
+    );
 
     // Write the file to the public directory
     await writeFile(fullPath, buffer);
@@ -299,9 +316,9 @@ export async function updatePostImage(
     revalidatePath("/[locale]/admin/mice-setting", "page");
     revalidatePath("/[locale]/mice-solutions", "page");
 
-    return { 
+    return {
       success: true,
-      path: imagePath
+      path: imagePath,
     };
   } catch (error) {
     console.error("Error updating post image:", error);
@@ -316,23 +333,23 @@ export async function updatePostImage(
 export async function getMiceWithPosts() {
   try {
     const db = await getDB();
-    
+
     const allMice = await db.query.mice.findMany({
       with: {
         posts: true,
       },
     });
-    
-    return { 
+
+    return {
       success: true,
-      mice: allMice
+      mice: allMice,
     };
   } catch (error) {
     console.error("Error fetching MICE:", error);
     return {
       success: false,
       error: error instanceof Error ? error.message : "Unknown error",
-      mice: []
+      mice: [],
     };
   }
 }

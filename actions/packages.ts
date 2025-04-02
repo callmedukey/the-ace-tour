@@ -7,6 +7,7 @@ import { revalidatePath } from "next/cache";
 import { writeFile } from "fs/promises";
 import { join } from "path";
 import { v4 as uuidv4 } from "uuid";
+import revalidateLocalePath from "@/lib/utils/revalidateLocalePath";
 
 // Define result types
 interface PackageResult {
@@ -43,14 +44,14 @@ export async function updatePackage(
   try {
     const db = await getDB();
 
-    await db
-      .update(packages)
-      .set(packageData)
-      .where(eq(packages.id, id));
+    await db.update(packages).set(packageData).where(eq(packages.id, id));
 
     // Revalidate the packages page to show the updated data
     revalidatePath("/[locale]/admin/packages-setting", "page");
-    revalidatePath("/[locale]/travel-packages", "page");
+
+    revalidateLocalePath("/travel-packages/la-departure");
+    revalidateLocalePath("/travel-packages/las-vegas-departure");
+    revalidateLocalePath("/travel-packages/semi-package");
 
     return { success: true };
   } catch (error) {
@@ -82,15 +83,21 @@ export async function uploadPackageImage(
     // Create unique filename
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
-    
+
     // Get file extension
     const originalName = file.name;
     const extension = originalName.split(".").pop();
-    
+
     // Create a unique filename with the original extension
     const filename = `${packageId}-${uuidv4()}.${extension}`;
     const imagePath = `/travel-packages/${filename}`;
-    const fullPath = join(process.cwd(), "public", "travel-packages", filename);
+    const fullPath = join(
+      process.cwd(),
+      "public",
+      "uploads",
+      "travel-packages",
+      filename
+    );
 
     // Write the file to the public directory
     await writeFile(fullPath, buffer);
@@ -108,9 +115,9 @@ export async function uploadPackageImage(
     revalidatePath("/[locale]/admin/packages-setting", "page");
     revalidatePath("/[locale]/travel-packages", "page");
 
-    return { 
+    return {
       success: true,
-      path: imagePath
+      path: imagePath,
     };
   } catch (error) {
     console.error("Error uploading image:", error);
@@ -128,9 +135,7 @@ export async function deletePackageImage(
   try {
     const db = await getDB();
 
-    await db
-      .delete(images)
-      .where(eq(images.id, imageId));
+    await db.delete(images).where(eq(images.id, imageId));
 
     // Revalidate the packages page to show the updated data
     revalidatePath("/[locale]/admin/packages-setting", "page");
@@ -150,23 +155,23 @@ export async function deletePackageImage(
 export async function getPackagesWithImages() {
   try {
     const db = await getDB();
-    
+
     const allPackages = await db.query.packages.findMany({
       with: {
         images: true,
       },
     });
-    
-    return { 
+
+    return {
       success: true,
-      packages: allPackages
+      packages: allPackages,
     };
   } catch (error) {
     console.error("Error fetching packages:", error);
     return {
       success: false,
       error: error instanceof Error ? error.message : "Unknown error",
-      packages: []
+      packages: [],
     };
   }
 }

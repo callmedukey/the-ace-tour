@@ -7,9 +7,11 @@ import getPackageData from "../queries/getPackageData";
 import TravelPackagesMedia from "./travel-packages-media";
 import { Metadata } from "next";
 
+export const revalidate = 604800;
+
 export const metadata: Metadata = {
-  title: "Travel Packages Settings",
-  description: "Travel Packages Settings",
+  title: "Travel Packages",
+  description: "Travel Packages",
 };
 
 export async function TravelPackages({
