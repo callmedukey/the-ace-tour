@@ -17,16 +17,16 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
       href: "/admin/packages-setting",
     },
     {
-      label: "MICE Settings",
-      href: "/admin/mice-settings",
+      label: "MICE Setting",
+      href: "/admin/mice-setting",
     },
     {
       label: "FAQ Settings",
-      href: "/admin/faq-settings",
+      href: "/admin/faq-setting",
     },
     {
       label: "Reviews",
-      href: "/admin/reviews-settings",
+      href: "/admin/reviews-setting",
     },
     {
       label: "Newsletters",

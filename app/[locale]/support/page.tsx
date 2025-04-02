@@ -2,6 +2,10 @@ import { setRequestLocale } from "next-intl/server";
 import React from "react";
 import { SupportHero } from "./components/support-hero";
 import { SupportFAQ } from "./components/support-faqs";
+import revalidateTimes from "@/lib/revalidateTimes";
+
+export const revalidate = revalidateTimes["7days"];
+
 const SupportPage = async ({
   params,
 }: {

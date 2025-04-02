@@ -111,8 +111,8 @@ export function BookingForm({ className }: BookingFormProps) {
 
   const [selectedRoute, setSelectedRoute] = React.useState("");
   const [availabilityInfo, setAvailabilityInfo] = React.useState<{
-    departing?: { count: number; remainingSpots: number; maxSpots: number };
-    returning?: { count: number; remainingSpots: number; maxSpots: number };
+    departing?: { count: number; passengerCount: number; remainingSpots: number; maxSpots: number };
+    returning?: { count: number; passengerCount: number; remainingSpots: number; maxSpots: number };
   }>({});
 
   // Add a function to check availability when date changes
@@ -131,6 +131,7 @@ export function BookingForm({ className }: BookingFormProps) {
           ...prev,
           departing: {
             count: departingResult.count ?? 0,
+            passengerCount: departingResult.passengerCount ?? 0,
             remainingSpots: departingResult.remainingSpots ?? 0,
             maxSpots: departingResult.maxSpots ?? 30,
           },
@@ -149,6 +150,7 @@ export function BookingForm({ className }: BookingFormProps) {
             ...prev,
             returning: {
               count: returningResult.count ?? 0,
+              passengerCount: returningResult.passengerCount ?? 0,
               remainingSpots: returningResult.remainingSpots ?? 0,
               maxSpots: returningResult.maxSpots ?? 30,
             },
@@ -386,10 +388,11 @@ export function BookingForm({ className }: BookingFormProps) {
         return;
       }
 
-      if ((bookingCountResult.count ?? 0) >= 30) {
-        console.warn("🚫 [BookingForm] Route is fully booked");
+      // Check if adding these passengers would exceed capacity
+      if ((bookingCountResult.remainingSpots ?? 0) < formData.passengers) {
+        console.warn("🚫 [BookingForm] Not enough capacity for passengers");
         alert(
-          "We apologize, but this route is fully booked for the selected date. Please choose a different date or route."
+          `We apologize, but there are only ${bookingCountResult.remainingSpots} spots available for the selected date. Your booking requires ${formData.passengers} spots.`
         );
         return;
       }
@@ -412,10 +415,11 @@ export function BookingForm({ className }: BookingFormProps) {
           return;
         }
 
-        if ((returnBookingCountResult.count ?? 0) >= 30) {
-          console.warn("🚫 [BookingForm] Return route is fully booked");
+        // Check if adding these passengers would exceed capacity for return journey
+        if ((returnBookingCountResult.remainingSpots ?? 0) < formData.passengers) {
+          console.warn("🚫 [BookingForm] Not enough capacity for passengers on return journey");
           alert(
-            "We apologize, but the return route is fully booked for the selected date. Please choose a different return date."
+            `We apologize, but there are only ${returnBookingCountResult.remainingSpots} spots available for the return date. Your booking requires ${formData.passengers} spots.`
           );
           return;
         }
@@ -1124,8 +1128,8 @@ export function BookingForm({ className }: BookingFormProps) {
                   Departing: {availabilityInfo.departing.remainingSpots} spots
                   available
                   <span className="text-gray-500 ml-2">
-                    ({availabilityInfo.departing.count}/
-                    {availabilityInfo.departing.maxSpots} booked)
+                    ({availabilityInfo.departing.passengerCount}/
+                    {availabilityInfo.departing.maxSpots} passengers booked across {availabilityInfo.departing.count} bookings)
                   </span>
                 </p>
                 <div className="w-full h-2 bg-gray-200 rounded-full mt-1">
@@ -1155,8 +1159,8 @@ export function BookingForm({ className }: BookingFormProps) {
                   Returning: {availabilityInfo.returning.remainingSpots} spots
                   available
                   <span className="text-gray-500 ml-2">
-                    ({availabilityInfo.returning.count}/
-                    {availabilityInfo.returning.maxSpots} booked)
+                    ({availabilityInfo.returning.passengerCount}/
+                    {availabilityInfo.returning.maxSpots} passengers booked across {availabilityInfo.returning.count} bookings)
                   </span>
                 </p>
                 <div className="w-full h-2 bg-gray-200 rounded-full mt-1">

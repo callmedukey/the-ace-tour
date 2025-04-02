@@ -13,7 +13,7 @@ const LogoutButton = () => {
   }
 
   return (
-    <div className="flex justify-center mt-12">
+    <div className="flex justify-center mb-12">
       <Button
         variant="outline"
         className="w-24 mx-auto inline-block"

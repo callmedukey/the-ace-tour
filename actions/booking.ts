@@ -7,6 +7,7 @@ import { eq, and, gte, lte } from "drizzle-orm";
 interface BookingCountResult {
   success: boolean;
   count?: number;
+  passengerCount?: number;
   remainingSpots?: number;
   maxSpots?: number;
   error?: string;
@@ -45,15 +46,24 @@ export async function getBookingCountForRoute(
       ),
     });
 
-    const count = bookings.length;
-    const MAX_SPOTS = 30;
-    const remainingSpots = MAX_SPOTS - count;
+    // Count total bookings
+    const bookingCount = bookings.length;
+    
+    // Count total passengers across all bookings
+    const passengerCount = bookings.reduce((total, booking) => {
+      return total + (booking.passengers || 1); // Default to 1 if passengers field is missing
+    }, 0);
+    
+    // Define maximum capacity in terms of passengers
+    const MAX_PASSENGER_CAPACITY = 30;
+    const remainingSpots = MAX_PASSENGER_CAPACITY - passengerCount;
 
     return {
       success: true,
-      count,
-      remainingSpots,
-      maxSpots: MAX_SPOTS,
+      count: bookingCount,
+      passengerCount: passengerCount,
+      remainingSpots: remainingSpots,
+      maxSpots: MAX_PASSENGER_CAPACITY,
     };
   } catch (error) {
     console.error("Error counting bookings:", error);

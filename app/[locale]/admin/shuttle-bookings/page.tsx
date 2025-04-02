@@ -20,6 +20,14 @@ import { DownloadCSVButton } from "./components/download-csv-button";
 import { StatusDropdown } from "./components/status-dropdown";
 import { sql } from "drizzle-orm";
 import { BookingStatus } from "@/actions/booking-status";
+import { Metadata } from "next";
+
+export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "Shuttle Bookings",
+  description: "Shuttle Bookings",
+};
 
 const page = async ({
   searchParams,
