@@ -37,7 +37,7 @@ export async function SupportHero() {
   ];
 
   return (
-    <section className="relative flex justify-center w-full min-h-[min(60rem,100vh)] overflow-hidden">
+    <section className="relative flex justify-center w-full min-h-[min(55rem,100vh)] overflow-hidden">
       <div className="absolute w-full h-full">
         <Image
           src={Pattern}
@@ -52,22 +52,20 @@ export async function SupportHero() {
         <div className="flex flex-col items-center lg:flex-row lg:justify-between lg:items-start">
           <div className="w-full max-w-[344px] lg:w-[344px] pt-6 sm:pt-8 md:pt-10 lg:pt-[59px] px-4 sm:px-6 lg:px-0 lg:ml-[140px]">
             {/* Main Title */}
-            <motion.h2
+            <motion.h1
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.7 }}
               transition={{ duration: 0.6 }}
-              className={`text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-semibold leading-tight sm:leading-[40px] md:leading-[44px] lg:leading-[48px] tracking-[0px] text-[#262626] text-center lg:text-left ${
-                isEnglish
-                  ? "mb-4 sm:mb-6 lg:mb-[20px]"
-                  : "mb-8 sm:mb-10 lg:mb-[50px]"
+              className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight sm:leading-[40px] md:leading-[44px] lg:leading-[48px] tracking-[0px] text-[#262626] text-center lg:text-left ${
+                isEnglish ? "mb-4 sm:mb-6 lg:mb-8" : "mb-8 sm:mb-10 lg:mb-12"
               }`}
             >
               {t("title")}
-            </motion.h2>
+            </motion.h1>
 
             {/* Contact Information Cards */}
-            <div className="space-y-4 sm:space-y-[25px] flex flex-col items-center lg:items-start">
+            <div className="space-y-4 sm:space-y-[25px] flex flex-col items-start">
               {featureCards.map((card, index) => {
                 return (
                   <motion.div

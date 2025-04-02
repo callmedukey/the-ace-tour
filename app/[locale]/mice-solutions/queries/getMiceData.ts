@@ -1,3 +1,5 @@
+"server only";
+
 import { getDB } from "@/db";
 import { cache } from "react";
 
