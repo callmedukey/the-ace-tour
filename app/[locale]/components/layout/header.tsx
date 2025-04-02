@@ -88,7 +88,8 @@ const Header = () => {
               }
             }}
             className={cn(
-              pathname === link.href || pathname.startsWith(link.href)
+              pathname === link.href ||
+                (pathname.startsWith(link.href) && link.href !== "/")
                 ? "text-highlight-blue"
                 : null
             )}
