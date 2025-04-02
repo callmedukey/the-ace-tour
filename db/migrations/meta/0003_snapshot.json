@@ -1,0 +1,816 @@
+{
+  "id": "33ab93d1-3cf8-4420-8d00-e40eaf637840",
+  "prevId": "ccd36d83-e2d4-418b-83bb-33421ded7acb",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.booking": {
+      "name": "booking",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "stripeId": {
+          "name": "stripeId",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "customerEmail": {
+          "name": "customerEmail",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "customerName": {
+          "name": "customerName",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tripType": {
+          "name": "tripType",
+          "type": "booking_type",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "from": {
+          "name": "from",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "to": {
+          "name": "to",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "departingDate": {
+          "name": "departingDate",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "returningDate": {
+          "name": "returningDate",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "departureTime": {
+          "name": "departureTime",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "returnTime": {
+          "name": "returnTime",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "passengers": {
+          "name": "passengers",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "address": {
+          "name": "address",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "price": {
+          "name": "price",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "booking_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "paymentStatus": {
+          "name": "paymentStatus",
+          "type": "payment_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "paymentId": {
+          "name": "paymentId",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "paymentMethod": {
+          "name": "paymentMethod",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "paidAt": {
+          "name": "paidAt",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "refundedAt": {
+          "name": "refundedAt",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.faqs": {
+      "name": "faqs",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "KOquestion": {
+          "name": "KOquestion",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ENGquestion": {
+          "name": "ENGquestion",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "KOanswer": {
+          "name": "KOanswer",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ENGanswer": {
+          "name": "ENGanswer",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.users": {
+      "name": "users",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "password": {
+          "name": "password",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "salt": {
+          "name": "salt",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "role": {
+          "name": "role",
+          "type": "role",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'user'"
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "users_email_unique": {
+          "name": "users_email_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "email"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.reviews": {
+      "name": "reviews",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "initial": {
+          "name": "initial",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "content": {
+          "name": "content",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.mice": {
+      "name": "mice",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "ENGtitle": {
+          "name": "ENGtitle",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "KOtitle": {
+          "name": "KOtitle",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "firstValue": {
+          "name": "firstValue",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "firstValueENGText": {
+          "name": "firstValueENGText",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "firstValueKOText": {
+          "name": "firstValueKOText",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "secondValue": {
+          "name": "secondValue",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "secondValueENGText": {
+          "name": "secondValueENGText",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "secondValueKOText": {
+          "name": "secondValueKOText",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "thirdValue": {
+          "name": "thirdValue",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "thirdValueENGText": {
+          "name": "thirdValueENGText",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "thirdValueKOText": {
+          "name": "thirdValueKOText",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.posts": {
+      "name": "posts",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "ENGtitle": {
+          "name": "ENGtitle",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "KOtitle": {
+          "name": "KOtitle",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ENGcontent": {
+          "name": "ENGcontent",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "KOcontent": {
+          "name": "KOcontent",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "imgPath": {
+          "name": "imgPath",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "imgENGAlt": {
+          "name": "imgENGAlt",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "imgKOAlt": {
+          "name": "imgKOAlt",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "miceId": {
+          "name": "miceId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "posts_miceId_mice_id_fk": {
+          "name": "posts_miceId_mice_id_fk",
+          "tableFrom": "posts",
+          "tableTo": "mice",
+          "columnsFrom": [
+            "miceId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.inquiries": {
+      "name": "inquiries",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "message": {
+          "name": "message",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "type": {
+          "name": "type",
+          "type": "inquiry_type",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'Travel Consultion'"
+        },
+        "status": {
+          "name": "status",
+          "type": "inquiry_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'Pending'"
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.images": {
+      "name": "images",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "path": {
+          "name": "path",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "KOalt": {
+          "name": "KOalt",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ENGalt": {
+          "name": "ENGalt",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "packageId": {
+          "name": "packageId",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "images_packageId_packages_id_fk": {
+          "name": "images_packageId_packages_id_fk",
+          "tableFrom": "images",
+          "tableTo": "packages",
+          "columnsFrom": [
+            "packageId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.packages": {
+      "name": "packages",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "ENGaccentText": {
+          "name": "ENGaccentText",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "KOaccentText": {
+          "name": "KOaccentText",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ENGfirstPoint": {
+          "name": "ENGfirstPoint",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "KOfirstPoint": {
+          "name": "KOfirstPoint",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ENGsecondPoint": {
+          "name": "ENGsecondPoint",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "KOsecondPoint": {
+          "name": "KOsecondPoint",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ENGthirdPoint": {
+          "name": "ENGthirdPoint",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "KOthirdPoint": {
+          "name": "KOthirdPoint",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ENGprice": {
+          "name": "ENGprice",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "KOprice": {
+          "name": "KOprice",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ENGbuttonText": {
+          "name": "ENGbuttonText",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "KObuttonText": {
+          "name": "KObuttonText",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "buttonLink": {
+          "name": "buttonLink",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "mostPopular": {
+          "name": "mostPopular",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {
+    "public.booking_status": {
+      "name": "booking_status",
+      "schema": "public",
+      "values": [
+        "CONFIRMED",
+        "CANCELLED"
+      ]
+    },
+    "public.booking_type": {
+      "name": "booking_type",
+      "schema": "public",
+      "values": [
+        "One Way",
+        "Round Trip"
+      ]
+    },
+    "public.payment_status": {
+      "name": "payment_status",
+      "schema": "public",
+      "values": [
+        "PENDING",
+        "PAID"
+      ]
+    },
+    "public.role": {
+      "name": "role",
+      "schema": "public",
+      "values": [
+        "user",
+        "admin"
+      ]
+    },
+    "public.inquiry_status": {
+      "name": "inquiry_status",
+      "schema": "public",
+      "values": [
+        "Pending",
+        "Resolved",
+        "Closed"
+      ]
+    },
+    "public.inquiry_type": {
+      "name": "inquiry_type",
+      "schema": "public",
+      "values": [
+        "Travel Consultion",
+        "MICE Service",
+        "Shuttle Service"
+      ]
+    }
+  },
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

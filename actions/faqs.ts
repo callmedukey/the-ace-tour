@@ -1,7 +1,7 @@
 "use server";
 
 import { getDB } from "@/db";
-import { faqs, faqsInsertSchema } from "@/db/schemas/faqs";
+import { faqs, CreateFaqSchema } from "@/db/schemas/faqs";
 import revalidateLocalePath from "@/lib/utils/revalidateLocalePath";
 import { ActionResponse } from "@/types/actions";
 import { eq } from "drizzle-orm";
@@ -9,7 +9,7 @@ import { eq } from "drizzle-orm";
 export async function createFaq(_: ActionResponse, formData: FormData) {
   const db = await getDB();
 
-  const result = await faqsInsertSchema.safeParseAsync({
+  const result = await CreateFaqSchema.safeParseAsync({
     KOquestion: formData.get("KOquestion"),
     ENGquestion: formData.get("ENGquestion"),
     KOanswer: formData.get("KOanswer"),
@@ -87,7 +87,7 @@ export async function updateFaq(_: ActionResponse, formData: FormData) {
     };
   }
 
-  const result = await faqsInsertSchema.safeParseAsync({
+  const result = await CreateFaqSchema.safeParseAsync({
     KOquestion: formData.get("KOquestion"),
     ENGquestion: formData.get("ENGquestion"),
     KOanswer: formData.get("KOanswer"),

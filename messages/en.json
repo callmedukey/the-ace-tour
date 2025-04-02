@@ -150,7 +150,7 @@
   "ShuttleHero": {
     "badge": "Travel Made Easier!",
     "title": "Shuttle Service",
-    "description": "Spacious seating, on-time departures, and a reliable shuttle service!Seamlessly travel between LAX, San Diego, and Las Vegas without the hassle of rental cars.",
+    "description": "Spacious seating, on-time departures, and a reliable shuttle service<important>!</important>Seamlessly travel between LAX, San Diego, and Las Vegas without the hassle of rental cars.",
     "features": {
       "feature1": "Scheduled rides | Fast & convenient | Budget-friendly",
       "feature2": "Easy Booking, Hassle-Free Travel!Start your smooth journey now."
@@ -276,5 +276,47 @@
     "title": "Payment Successful!",
     "message": "Thank you for your booking. We have sent you an email with your booking details.",
     "close": "Close"
+  },
+
+  "BookingForm": {
+    "oneWay": "One Way",
+    "roundTrip": "Round Trip",
+    "ourRoutes": "Our Routes",
+    "routePlaceHolder": "Select a route",
+    "from": "From",
+    "fromPlaceHolder": "Select location",
+    "to": "To",
+    "toPlaceHolder": "Select location",
+    "departingDate": "Departing",
+    "departingDatePlaceHolder": "Pick a date",
+    "returningDate": "Returning",
+    "returningDatePlaceHolder": "Pick a date",
+    "departurePickUpTime": "Departure Pick Up Time",
+    "returnPickUpTime": "Return Pick Up Time",
+    "passengers": "Passengers",
+    "luggage": "Luggage",
+    "price": "Price",
+    "total": "Total",
+    "name": "Your Name",
+    "namePlaceHolder": "Enter your full name",
+    "email": "Email Address",
+    "emailPlaceHolder": "Enter your email address",
+    "address": "Street Address",
+    "extraLuggageFee": "Extra Luggage Fee",
+    "luggageInfo": {
+      "one": "Each passenger is entitled to 1 free checked luggage item",
+      "two": "Small carry-on items are also included at no extra charge",
+      "three": "Additional luggage is available for just $15 USD per item"
+    },
+
+    "missingDepartingDate": "Please select a departing date.",
+    "missingReturningDate": "Please select a returning date.",
+    "bookingSuccessTitle": "Thank you!",
+    "successPrimaryMessage": "Your payment was successful. We will soon send you an email with your booking details.",
+    "successSecondaryMessage": "If you have any questions, please contact our customer service.",
+    "button": {
+      "label": "Got Questions? We're Here for You!",
+      "bookNow": "Book Now"
+    }
   }
 }

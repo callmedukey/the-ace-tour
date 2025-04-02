@@ -276,5 +276,47 @@
   "Index": {
     "title": "에이스 투어",
     "description": "당신의 여행 파트너"
+  },
+
+  "BookingForm": {
+    "oneWay": "편도",
+    "roundTrip": "왕복",
+    "ourRoutes": "노선",
+    "routePlaceHolder": "노선을 선택해주세요",
+    "from": "출발지",
+    "fromPlaceHolder": "출발지를 선택해주세요",
+    "to": "도착지",
+    "toPlaceHolder": "도착지를 선택해주세요",
+    "departingDate": "출발 날짜",
+    "departingDatePlaceHolder": "출발 날짜를 선택해주세요",
+    "returningDate": "돌아오는 날짜",
+    "returningDatePlaceHolder": "돌아오는 날짜를 선택해주세요",
+    "departurePickUpTime": "출발 시간",
+    "returnPickUpTime": "돌아오는 시간",
+    "passengers": "인원",
+    "luggage": "수하물",
+    "price": "가격",
+    "total": "총 가격",
+    "name": "이름",
+    "namePlaceHolder": "이름을 입력해주세요",
+    "email": "이메일",
+    "emailPlaceHolder": "이메일을 입력해주세요",
+    "address": "주소",
+    "extraLuggageFee": "추가 수하물 비용",
+    "luggageInfo": {
+      "one": "승객 1인당 무료 수하물 1개가 제공됩니다",
+      "two": "작은 기내용 수하물은 무료로 포함됩니다",
+      "three": "추가 수하물은 개당 15달러(USD)에 이용 가능합니다"
+    },
+
+    "missingDepartingDate": "출발 날짜를 선택해주세요.",
+    "missingReturningDate": "돌아오는 날짜를 선택해주세요.",
+    "bookingSuccessTitle": "감사합니다!",
+    "successPrimaryMessage": "결제가 완료되었습니다. 예약 상세 정보를 곧 이메일로 보내드리겠습니다",
+    "successSecondaryMessage": "문의사항이 있으시면 고객센터에 문의해주세요.",
+    "button": {
+      "label": "문의하기 – 맞춤 여행 상담",
+      "bookNow": "예약하기"
+    }
   }
 }

@@ -11,8 +11,8 @@ export const config = {
     "/((?!trpc|_next|_vercel|admin|.*\\..*).)*",
     // Include locale-specific API routes
     "/:locale/api/checkout",
-    // Include webhook endpoint
-    "/api/webhook",
+    // Exclude webhook endpoint - Stripe needs direct access without redirects
+    // "/api/webhook", - REMOVED
     // Redirect root to default locale
     "/",
   ],

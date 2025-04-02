@@ -22,6 +22,27 @@
       "when": 1743574389276,
       "tag": "0002_free_gabe_jones",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1743580996038,
+      "tag": "0003_thick_true_believers",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1743581016792,
+      "tag": "0004_thick_junta",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1743583810132,
+      "tag": "0005_loving_meteorite",
+      "breakpoints": true
     }
   ]
 }
