@@ -51,7 +51,7 @@ export async function SupportFAQ() {
   const displayCards = faqs && faqs?.length ? faqs : defaultCards;
 
   return (
-    <section className="relative flex justify-center w-full min-h-[min(60rem,100vh)] overflow-hidden">
+    <section className="relative flex justify-center w-full min-h-[min(60rem,100vh)] pb-[31.25rem] overflow-hidden">
       <div className="absolute w-full h-full">
         <Image
           src={Pattern}

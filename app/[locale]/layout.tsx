@@ -6,6 +6,8 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import Header from "./components/layout/header";
+import { Toaster } from "sonner";
+import { Footer } from "./components/layout/footer";
 
 const Pretendard = localFont({
   src: [
@@ -50,6 +52,8 @@ export default async function RootLayout({
         <NextIntlClientProvider>
           <Header />
           {children}
+          <Footer />
+          <Toaster />
         </NextIntlClientProvider>
       </body>
     </html>
