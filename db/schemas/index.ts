@@ -1,5 +1,5 @@
 // Export all schemas from this directory
-export * from "./users";
+export * from "./admin";
 export * from "./reviews";
 export * from "./mice";
 export * from "./faqs";

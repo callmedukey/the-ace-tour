@@ -43,6 +43,13 @@
       "when": 1743583810132,
       "tag": "0005_loving_meteorite",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1743592302070,
+      "tag": "0006_known_nomad",
+      "breakpoints": true
     }
   ]
 }

@@ -2,10 +2,12 @@ import NextAuth, { type DefaultSession } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { getDB } from "./db";
 import { eq } from "drizzle-orm";
-import { users, userSignInSchema } from "./db/schemas";
+
 import type { Role } from "./types/enums";
 
 import { verifyPassword } from "./lib/utils/verifyPassword";
+import { admin } from "./db/schemas";
+import { adminSignInSchema } from "./db/schemas";
 
 declare module "next-auth" {
   interface Session {
@@ -22,24 +24,24 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     Credentials({
       credentials: {
-        email: {},
+        username: {},
         password: {},
       },
       authorize: async (credentials) => {
-        const parsed = await userSignInSchema.safeParseAsync(credentials);
+        const parsed = await adminSignInSchema.safeParseAsync(credentials);
 
         if (!parsed.success) {
-          throw new Error("Please enter correct email and password");
+          throw new Error("Please enter correct username and password");
         }
 
-        const { email, password } = parsed.data;
+        const { username, password } = parsed.data;
 
         const db = await getDB();
 
         const foundUsers = await db
           .select()
-          .from(users)
-          .where(eq(users.email, email));
+          .from(admin)
+          .where(eq(admin.username, username));
 
         if (!foundUsers.length || foundUsers.length > 1) {
           throw new Error("User does not exist");
@@ -61,17 +63,36 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           throw new Error("Please enter correct email and password");
         }
 
-        if (!user.id || !user.email || !user.name || !user.role) {
+        if (!user.username || !user.password || !user.salt) {
           throw new Error("Invalid user data. Please contact admin.");
         }
 
         return {
-          id: user.id,
-          email: user.email,
-          name: user.name,
-          role: user.role,
+          id: user.username,
+          username: user.username,
         };
       },
     }),
   ],
+  session: {
+    strategy: "jwt",
+  },
+  callbacks: {
+    async session({ session, token }) {
+      session.user.id = token.sub as string;
+      return session;
+    },
+    async jwt({ token, user }) {
+      if (user) {
+        token.sub = user.id;
+      }
+      return token;
+    },
+    async signIn({ user }) {
+      if (user) {
+        return true;
+      }
+      return false;
+    },
+  },
 });
