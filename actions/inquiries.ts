@@ -5,8 +5,66 @@ import {
   CreateInquirySchema,
   CreateInquiryType,
   inquiries,
-} from "@/db/schemas";
+} from "@/db/schemas/inquiries";
 import { ActionResponse } from "@/types/actions";
+import { eq } from "drizzle-orm";
+import { revalidatePath } from "next/cache";
+
+// Define result types
+interface InquiryResult {
+  success: boolean;
+  error?: string;
+}
+
+// Update inquiry status
+export async function updateInquiryStatus(
+  id: number,
+  status: "Pending" | "Resolved" | "Closed"
+): Promise<InquiryResult> {
+  try {
+    const db = await getDB();
+
+    await db
+      .update(inquiries)
+      .set({
+        status,
+        updatedAt: new Date().toISOString(),
+      })
+      .where(eq(inquiries.id, id));
+
+    // Revalidate the inquiries pages to show the updated data
+    revalidatePath("/[locale]/admin/inquiries", "page");
+    revalidatePath(`/[locale]/admin/inquiries/${id}`, "page");
+
+    return { success: true };
+  } catch (error) {
+    console.error("Error updating inquiry status:", error);
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : "Unknown error",
+    };
+  }
+}
+
+// Delete an inquiry
+export async function deleteInquiry(id: number): Promise<InquiryResult> {
+  try {
+    const db = await getDB();
+
+    await db.delete(inquiries).where(eq(inquiries.id, id));
+
+    // Revalidate the inquiries page to show the updated data
+    revalidatePath("/[locale]/admin/inquiries", "page");
+
+    return { success: true };
+  } catch (error) {
+    console.error("Error deleting inquiry:", error);
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : "Unknown error",
+    };
+  }
+}
 
 export const createInquiry = async (
   _: ActionResponse<CreateInquiryType & { locale: string }> | null,

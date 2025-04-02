@@ -1,125 +1,123 @@
 "use server";
 
 import { getDB } from "@/db";
-import { faqs, CreateFaqSchema } from "@/db/schemas/faqs";
-import revalidateLocalePath from "@/lib/utils/revalidateLocalePath";
-import { ActionResponse } from "@/types/actions";
+import { faqs } from "@/db/schemas/faqs";
 import { eq } from "drizzle-orm";
+import { revalidatePath } from "next/cache";
 
-export async function createFaq(_: ActionResponse, formData: FormData) {
-  const db = await getDB();
-
-  const result = await CreateFaqSchema.safeParseAsync({
-    KOquestion: formData.get("KOquestion"),
-    ENGquestion: formData.get("ENGquestion"),
-    KOanswer: formData.get("KOanswer"),
-    ENGanswer: formData.get("ENGanswer"),
-  });
-
-  if (!result.success) {
-    return {
-      errors: result.error.flatten().fieldErrors,
-      success: false,
-      message: "Please enter valid data",
-    };
-  }
-
-  const { KOquestion, ENGquestion, KOanswer, ENGanswer } = result.data;
-
-  const inserted = await db
-    .insert(faqs)
-    .values({ KOquestion, ENGquestion, KOanswer, ENGanswer })
-    .returning();
-
-  if (!inserted) {
-    return {
-      success: false,
-      message: "Failed to create FAQ",
-    };
-  }
-
-  revalidateLocalePath("/support");
-
-  return {
-    success: true,
-    message: "FAQ created successfully",
-  };
+// Define result types
+interface FaqResult {
+  success: boolean;
+  error?: string;
 }
 
-export async function deleteFaq(_: ActionResponse, formData: FormData) {
-  const db = await getDB();
+// Create a new FAQ
+export async function createFaq(
+  faqData: {
+    KOquestion: string;
+    ENGquestion: string;
+    KOanswer: string;
+    ENGanswer: string;
+  }
+): Promise<FaqResult> {
+  try {
+    const db = await getDB();
 
-  const id = formData.get("id");
+    await db.insert(faqs).values({
+      ...faqData,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    });
 
-  if (!id || typeof id !== "string" || !parseInt(id)) {
+    // Revalidate the FAQ pages to show the updated data
+    revalidatePath("/[locale]/admin/faq-setting", "page");
+    revalidatePath("/[locale]/support", "page");
+
+    return { success: true };
+  } catch (error) {
+    console.error("Error creating FAQ:", error);
     return {
       success: false,
-      message: "No ID provided",
+      error: error instanceof Error ? error.message : "Unknown error",
     };
   }
-
-  const deleted = await db.delete(faqs).where(eq(faqs.id, parseInt(id)));
-
-  if (!deleted) {
-    return {
-      success: false,
-      message: "Failed to delete FAQ",
-    };
-  }
-
-  revalidateLocalePath("/support");
-
-  return {
-    success: true,
-    message: "FAQ deleted successfully",
-  };
 }
 
-export async function updateFaq(_: ActionResponse, formData: FormData) {
-  const db = await getDB();
+// Update an existing FAQ
+export async function updateFaq(
+  id: number,
+  faqData: {
+    KOquestion: string;
+    ENGquestion: string;
+    KOanswer: string;
+    ENGanswer: string;
+  }
+): Promise<FaqResult> {
+  try {
+    const db = await getDB();
 
-  const id = formData.get("id");
+    await db
+      .update(faqs)
+      .set({
+        ...faqData,
+        updatedAt: new Date().toISOString(),
+      })
+      .where(eq(faqs.id, id));
 
-  if (!id || typeof id !== "string" || !parseInt(id)) {
+    // Revalidate the FAQ pages to show the updated data
+    revalidatePath("/[locale]/admin/faq-setting", "page");
+    revalidatePath("/[locale]/support", "page");
+
+    return { success: true };
+  } catch (error) {
+    console.error("Error updating FAQ:", error);
     return {
       success: false,
-      message: "No ID provided",
+      error: error instanceof Error ? error.message : "Unknown error",
     };
   }
+}
 
-  const result = await CreateFaqSchema.safeParseAsync({
-    KOquestion: formData.get("KOquestion"),
-    ENGquestion: formData.get("ENGquestion"),
-    KOanswer: formData.get("KOanswer"),
-    ENGanswer: formData.get("ENGanswer"),
-  });
+// Delete an FAQ
+export async function deleteFaq(id: number): Promise<FaqResult> {
+  try {
+    const db = await getDB();
 
-  if (!result.success) {
+    await db.delete(faqs).where(eq(faqs.id, id));
+
+    // Revalidate the FAQ pages to show the updated data
+    revalidatePath("/[locale]/admin/faq-setting", "page");
+    revalidatePath("/[locale]/support", "page");
+
+    return { success: true };
+  } catch (error) {
+    console.error("Error deleting FAQ:", error);
     return {
       success: false,
-      message: "Please enter valid data",
-      errors: result.error.flatten().fieldErrors,
+      error: error instanceof Error ? error.message : "Unknown error",
     };
   }
+}
 
-  const { KOquestion, ENGquestion, KOanswer, ENGanswer } = result.data;
-
-  const updated = await db
-    .update(faqs)
-    .set({ KOquestion, ENGquestion, KOanswer, ENGanswer })
-    .where(eq(faqs.id, parseInt(id)));
-
-  if (!updated) {
+// Get all FAQs
+export async function getAllFaqs() {
+  try {
+    const db = await getDB();
+    
+    const allFaqs = await db.query.faqs.findMany({
+      orderBy: (faqs, { asc }) => [asc(faqs.id)],
+    });
+    
+    return { 
+      success: true,
+      faqs: allFaqs
+    };
+  } catch (error) {
+    console.error("Error fetching FAQs:", error);
     return {
       success: false,
-      message: "Failed to update FAQ",
+      error: error instanceof Error ? error.message : "Unknown error",
+      faqs: []
     };
   }
-
-  revalidateLocalePath("/support");
-
-  return {
-    success: true,
-    message: "FAQ updated successfully",
-  };
 }

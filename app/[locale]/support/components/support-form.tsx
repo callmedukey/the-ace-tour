@@ -1,12 +1,12 @@
 "use client";
 
-import { createInquiry } from "@/actions/inquiries";
 import { Button } from "@/components/ui/button";
 import { CreateInquiryType } from "@/db/schemas";
 import { cn } from "@/lib/cn";
 import { ActionResponse } from "@/types/actions";
 import { useActionState } from "react";
 import { useLocale } from "next-intl";
+import { createInquiry } from "@/actions/inquiries";
 const initialState: ActionResponse<CreateInquiryType & { locale: string }> = {
   success: false,
   message: "",
