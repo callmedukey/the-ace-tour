@@ -39,7 +39,6 @@ export const booking = pgTable("booking", {
   paymentId: text(),
   paymentMethod: text(),
   paidAt: date(),
-  refundedAt: date(),
   luggage: integer(),
   createdAt: timestamp().notNull().defaultNow(),
   updatedAt: timestamp().notNull().defaultNow(),

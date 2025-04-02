@@ -50,6 +50,13 @@
       "when": 1743592302070,
       "tag": "0006_known_nomad",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1743597431867,
+      "tag": "0007_heavy_the_twelve",
+      "breakpoints": true
     }
   ]
 }

@@ -195,10 +195,10 @@
 
   "Footer": {
     "newsletter": {
-      "title": "Newsletter",
-      "description": "Sign up for insider perks and exclusive travel promotions tailored for you.",
-      "placeholder": "Your email",
-      "button": "Sign up"
+      "title": "뉴스레터",
+      "description": "맞춤형 혜택과 여행 프로모션 정보를 받아보세요!",
+      "placeholder": "이메일주소를 입력해주세요",
+      "button": "구둑하기"
     },
     "sitemap": {
       "title": "Sitemap",
