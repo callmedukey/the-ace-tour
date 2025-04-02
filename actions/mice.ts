@@ -13,10 +13,10 @@ export const createMicePageData = async (
 
   const result = await CreateMiceSchema.safeParseAsync({
     ENGtitle: formData.get("ENGtitle"),
-    KOtitle: formData.get("ENGtitle"),
+    KOtitle: formData.get("KOtitle"),
     firstValue: formData.get("firstValue"),
-    secondValue: formData.get("firstValue"),
-    thirdValue: formData.get("firstValue"),
+    secondValue: formData.get("secondValue"),
+    thirdValue: formData.get("thirdValue"),
     firstValueENGText: formData.get("firstValueENGText"),
     firstValueKOText: formData.get("firstValueKOText"),
     secondValueENGText: formData.get("secondValueENGText"),

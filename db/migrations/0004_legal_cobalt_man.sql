@@ -1,0 +1,1 @@
+ALTER TABLE "inquiries" DROP CONSTRAINT "inquiries_email_unique";

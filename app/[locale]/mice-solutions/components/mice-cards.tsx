@@ -53,7 +53,8 @@ export async function MiceCards() {
             <motion.div
               key={card.id}
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="flex flex-col w-full bg-white overflow-hidden"
             >
@@ -66,6 +67,7 @@ export async function MiceCards() {
                     fill
                     className="object-cover"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    quality={100}
                   />
                 ) : (
                   <div className="w-full h-full bg-gray-600" />
