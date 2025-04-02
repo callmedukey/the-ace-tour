@@ -34,7 +34,7 @@ export const posts = pgTable("posts", {
   imgENGAlt: text().notNull(),
   imgKOAlt: text().notNull(),
   // This is a foreign key reference to the mice table
-  miceId: uuid().notNull(),
+  miceId: uuid().references(() => mice.id),
   createdAt: text().$defaultFn(() => new Date().toISOString()),
   updatedAt: text().$onUpdateFn(() => new Date().toISOString()),
 });

@@ -1,0 +1,1 @@
+ALTER TABLE "packages" ADD COLUMN "mostPopular" boolean DEFAULT false NOT NULL;

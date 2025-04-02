@@ -24,6 +24,7 @@
     "dotenv": "^16.4.7",
     "drizzle-orm": "^0.41.0",
     "drizzle-zod": "^0.7.1",
+    "embla-carousel-react": "^8.5.2",
     "isomorphic-dompurify": "^2.22.0",
     "jose": "^6.0.10",
     "lucide-react": "^0.486.0",

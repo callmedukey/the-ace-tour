@@ -107,8 +107,9 @@
   },
 
   "TravelPackages": {
-    "badge": "The Tour만의 프리미엄 여행 패키지",
+    "badge": "Ace Tour만의 프리미엄 여행 패키지",
     "title": "나만의 완벽한 여행을 선택하세요",
+    "popularBadge": "인기상품",
     "description": "완전한 가이드 투어부터 자유로운 일정 조합까지, 원하는 스타일에 맞춘 최고의 여행 패키지를 제공합니다!",
     "viewAllButton": "See next package",
     "laPackages": {

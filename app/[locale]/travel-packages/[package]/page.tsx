@@ -1,5 +1,5 @@
 import React from "react";
-import { TravelPackages } from "./components/TravelPackages";
+import { TravelPackages } from "./components/travel-packages";
 import { setRequestLocale } from "next-intl/server";
 
 export const generateStaticParams = async () => {
@@ -10,13 +10,24 @@ export const generateStaticParams = async () => {
   ];
 };
 
-const page = async ({ params }: { params: Promise<{ locale: string }> }) => {
-  const { locale } = await params;
+const page = async ({
+  params,
+}: {
+  params: Promise<{
+    locale: string;
+    package: string;
+  }>;
+}) => {
+  const { locale, package: packageType } = await params;
   setRequestLocale(locale);
 
   return (
     <main>
-      <TravelPackages />
+      <TravelPackages
+        packageType={
+          packageType as "la-departure" | "las-vegas-departure" | "semi-package"
+        }
+      />
     </main>
   );
 };

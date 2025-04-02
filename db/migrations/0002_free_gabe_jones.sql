@@ -1,0 +1,1 @@
+ALTER TABLE "packages" ADD COLUMN "buttonLink" text NOT NULL;

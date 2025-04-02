@@ -105,6 +105,7 @@
     "title": "Select Your Package",
     "description": "From fully guided tours to flexible semi-independent adventures, we offer the perfect package tailored to your travel style!",
     "viewAllButton": "See next package",
+    "popularBadge": "Most Popular",
     "laPackages": {
       "title": "LA Departure",
       "price": "$599",

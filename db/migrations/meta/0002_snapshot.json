@@ -1,6 +1,6 @@
 {
-  "id": "5df5bfea-5b28-4f99-b44a-cbf8e8479f01",
-  "prevId": "f355dcbc-7960-4e48-aa08-635ec717f527",
+  "id": "ccd36d83-e2d4-418b-83bb-33421ded7acb",
+  "prevId": "1b84e333-d1b4-48d9-9a87-63aca00abab4",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -335,7 +335,86 @@
           "name": "miceId",
           "type": "uuid",
           "primaryKey": false,
+          "notNull": false
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "posts_miceId_mice_id_fk": {
+          "name": "posts_miceId_mice_id_fk",
+          "tableFrom": "posts",
+          "tableTo": "mice",
+          "columnsFrom": [
+            "miceId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.inquiries": {
+      "name": "inquiries",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
           "notNull": true
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "message": {
+          "name": "message",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "type": {
+          "name": "type",
+          "type": "inquiry_type",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'Travel Consultion'"
+        },
+        "status": {
+          "name": "status",
+          "type": "inquiry_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'Pending'"
         },
         "createdAt": {
           "name": "createdAt",
@@ -357,6 +436,168 @@
       "policies": {},
       "checkConstraints": {},
       "isRLSEnabled": false
+    },
+    "public.images": {
+      "name": "images",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "path": {
+          "name": "path",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "KOalt": {
+          "name": "KOalt",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ENGalt": {
+          "name": "ENGalt",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "packageId": {
+          "name": "packageId",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "images_packageId_packages_id_fk": {
+          "name": "images_packageId_packages_id_fk",
+          "tableFrom": "images",
+          "tableTo": "packages",
+          "columnsFrom": [
+            "packageId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.packages": {
+      "name": "packages",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "ENGaccentText": {
+          "name": "ENGaccentText",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "KOaccentText": {
+          "name": "KOaccentText",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ENGfirstPoint": {
+          "name": "ENGfirstPoint",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "KOfirstPoint": {
+          "name": "KOfirstPoint",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ENGsecondPoint": {
+          "name": "ENGsecondPoint",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "KOsecondPoint": {
+          "name": "KOsecondPoint",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ENGthirdPoint": {
+          "name": "ENGthirdPoint",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "KOthirdPoint": {
+          "name": "KOthirdPoint",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ENGprice": {
+          "name": "ENGprice",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "KOprice": {
+          "name": "KOprice",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ENGbuttonText": {
+          "name": "ENGbuttonText",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "KObuttonText": {
+          "name": "KObuttonText",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "buttonLink": {
+          "name": "buttonLink",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "mostPopular": {
+          "name": "mostPopular",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
     }
   },
   "enums": {
@@ -366,6 +607,24 @@
       "values": [
         "user",
         "admin"
+      ]
+    },
+    "public.inquiry_status": {
+      "name": "inquiry_status",
+      "schema": "public",
+      "values": [
+        "Pending",
+        "Resolved",
+        "Closed"
+      ]
+    },
+    "public.inquiry_type": {
+      "name": "inquiry_type",
+      "schema": "public",
+      "values": [
+        "Travel Consultion",
+        "MICE Service",
+        "Shuttle Service"
       ]
     }
   },
