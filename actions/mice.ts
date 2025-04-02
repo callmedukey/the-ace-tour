@@ -162,7 +162,7 @@ export async function createPost(formData: FormData): Promise<MiceResult> {
 
     // Create a unique filename with the original extension
     const filename = `mice-${uuidv4()}.${extension}`;
-    const imagePath = `/mice-solutions/${filename}`;
+    const imagePath = `/uploads/mice-solutions/${filename}`;
     const fullPath = join(
       process.cwd(),
       "public",
@@ -288,7 +288,7 @@ export async function updatePostImage(
 
     // Create a unique filename with the original extension
     const filename = `mice-${uuidv4()}.${extension}`;
-    const imagePath = `/mice-solutions/${filename}`;
+    const imagePath = `/uploads/mice-solutions/${filename}`;
     const fullPath = join(
       process.cwd(),
       "public",

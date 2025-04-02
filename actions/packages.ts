@@ -7,7 +7,6 @@ import { revalidatePath } from "next/cache";
 import { writeFile } from "fs/promises";
 import { join } from "path";
 import { v4 as uuidv4 } from "uuid";
-import revalidateLocalePath from "@/lib/utils/revalidateLocalePath";
 
 // Define result types
 interface PackageResult {
@@ -48,10 +47,9 @@ export async function updatePackage(
 
     // Revalidate the packages page to show the updated data
     revalidatePath("/[locale]/admin/packages-setting", "page");
-
-    revalidateLocalePath("/travel-packages/la-departure");
-    revalidateLocalePath("/travel-packages/las-vegas-departure");
-    revalidateLocalePath("/travel-packages/semi-package");
+    revalidatePath("/[locale]/travel-packages/la-departure", "page");
+    revalidatePath("/[locale]/travel-packages/las-vegas-departure", "page");
+    revalidatePath("/[locale]/travel-packages/semi-package", "page");
 
     return { success: true };
   } catch (error) {
@@ -90,7 +88,7 @@ export async function uploadPackageImage(
 
     // Create a unique filename with the original extension
     const filename = `${packageId}-${uuidv4()}.${extension}`;
-    const imagePath = `/travel-packages/${filename}`;
+    const imagePath = `/uploads/travel-packages/${filename}`;
     const fullPath = join(
       process.cwd(),
       "public",
