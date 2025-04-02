@@ -1,7 +1,14 @@
-import React from "react";
+import { redirect } from "@/i18n/navigation";
+import { setRequestLocale } from "next-intl/server";
 
-const ShuttleServicePage = () => {
-  return <main className="max-w-screen-2xl mx-auto px-4"></main>;
+const page = async ({ params }: { params: Promise<{ locale: string }> }) => {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  redirect({
+    href: "/travel-packages/la-departure",
+    locale: locale,
+  });
+  return null;
 };
 
-export default ShuttleServicePage;
+export default page;

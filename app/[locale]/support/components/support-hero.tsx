@@ -72,8 +72,8 @@ export async function SupportHero() {
                     key={index}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.7 }}
-                    transition={{ duration: 0.6, delay: 0.1 * index }}
+                    viewport={{ once: true, amount: 1 }}
+                    transition={{ duration: 1, delay: 0.1 * index }}
                     className="flex items-start gap-2 sm:gap-2.5 bg-transparent rounded-[1rem] xs:rounded-[1.375rem]"
                   >
                     <div className="w-4 h-4 sm:w-4 sm:h-4 mt-3 sm:mt-3.5">
