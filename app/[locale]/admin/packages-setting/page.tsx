@@ -10,6 +10,7 @@ const PackagesSettingPage = async () => {
     with: {
       images: true,
     },
+    orderBy: (packages, { desc }) => [desc(packages.id)],
   });
 
   return (
