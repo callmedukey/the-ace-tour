@@ -12,6 +12,37 @@ export const generateStaticParams = async () => {
 
 export const revalidate = 604800;
 
+export const generateMetadata = async ({
+  params,
+}: {
+  params: Promise<{ locale: string; package: string }>;
+}) => {
+  const { package: packageType } = await params;
+
+  switch (packageType) {
+    case "la-departure":
+      return {
+        title: "Los Angeles Departure",
+        description: "Los Angeles Departure",
+      };
+    case "las-vegas-departure":
+      return {
+        title: "Las Vegas Departure",
+        description: "Las Vegas Departure",
+      };
+    case "semi-package":
+      return {
+        title: "Semi Package",
+        description: "Semi Package",
+      };
+    default:
+      return {
+        title: "Travel Packages",
+        description: "Travel Packages",
+      };
+  }
+};
+
 const page = async ({
   params,
 }: {

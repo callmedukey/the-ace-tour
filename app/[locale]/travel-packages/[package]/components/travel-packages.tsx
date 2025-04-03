@@ -5,14 +5,6 @@ import PatternBackgroundImage from "@/public/travel-packages/travels-package-bg.
 import { getLocale, getTranslations } from "next-intl/server";
 import getPackageData from "../queries/getPackageData";
 import TravelPackagesMedia from "./travel-packages-media";
-import { Metadata } from "next";
-
-export const revalidate = 604800;
-
-export const metadata: Metadata = {
-  title: "Travel Packages",
-  description: "Travel Packages",
-};
 
 export async function TravelPackages({
   packageType,
