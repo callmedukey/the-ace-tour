@@ -13,8 +13,6 @@ export async function TravelPackages({
 }) {
   const t = await getTranslations("TravelPackages");
   const locale = await getLocale();
-  // const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
-  // const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   const tourPackage = await getPackageData(packageType);
 
@@ -270,10 +268,7 @@ export async function TravelPackages({
         {/* Navigation Arrows */}
 
         <div className="flex justify-center mt-[20px] sm:mt-[25px] md:mt-[30px] gap-2 mb-6 sm:mb-7 md:mb-8">
-          <button
-            // onClick={() => handleCardNavigation("prev")}
-            className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full border-2 border-white/30 flex items-center justify-center text-white hover:bg-white/10 transition-colors duration-300"
-          >
+          <button className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full border-2 border-white/30 flex items-center justify-center text-white hover:bg-white/10 transition-colors duration-300">
             <svg
               className="w-5 h-5 sm:w-5.5 sm:h-5.5 md:w-6 md:h-6"
               fill="none"
@@ -288,10 +283,7 @@ export async function TravelPackages({
               />
             </svg>
           </button>
-          <button
-            // onClick={() => handleCardNavigation("next")}
-            className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full border-2 border-white/30 flex items-center justify-center text-white hover:bg-white/10 transition-colors duration-300"
-          >
+          <button className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full border-2 border-white/30 flex items-center justify-center text-white hover:bg-white/10 transition-colors duration-300">
             <svg
               className="w-5 h-5 sm:w-5.5 sm:h-5.5 md:w-6 md:h-6"
               fill="none"
