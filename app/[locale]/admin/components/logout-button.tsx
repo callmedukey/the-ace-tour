@@ -19,7 +19,7 @@ const LogoutButton = () => {
         className="w-24 mx-auto inline-block"
         onClick={() =>
           signOut({
-            redirectTo: "/en/admin/login",
+            redirectTo: "/en/login",
           })
         }
       >
