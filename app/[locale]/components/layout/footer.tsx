@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { useParams, usePathname } from "next/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { FaFacebook, FaLinkedin, FaInstagram, FaSpinner } from "react-icons/fa";
 
@@ -18,8 +17,6 @@ const initialState: ActionResponse = {
 
 export function Footer() {
   const t = useTranslations("Footer");
-  const params = useParams();
-  const locale = params.locale as string;
   const pathname = usePathname();
   const isOnSupportPage = pathname?.includes("support");
 
@@ -103,31 +100,31 @@ export function Footer() {
             </h3>
             <nav className="flex flex-col items-center sm:items-start gap-[24px]">
               <Link
-                href={`/${locale}`}
+                href={`/`}
                 className="block text-[#FFFFFF] opacity-70 hover:opacity-100 hover:text-white font-medium text-[14px] leading-[20px] tracking-[0px]"
               >
                 {t("sitemap.home")}
               </Link>
               <Link
-                href={`/${locale}/travel-packages`}
+                href={`/travel-packages`}
                 className="block text-[#FFFFFF] opacity-70 hover:opacity-100 hover:text-white font-medium text-[14px] leading-[20px] tracking-[0px]"
               >
                 {t("sitemap.travelPackages")}
               </Link>
               <Link
-                href={`/${locale}/shuttle-bus`}
+                href={`/shuttle-service`}
                 className="block text-[#FFFFFF] opacity-70 hover:opacity-100 hover:text-white font-medium text-[14px] leading-[20px] tracking-[0px]"
               >
                 {t("sitemap.shuttleBus")}
               </Link>
               <Link
-                href={`/${locale}/mice-solutions`}
+                href={`/mice-solutions`}
                 className="block text-[#FFFFFF] opacity-70 hover:opacity-100 hover:text-white font-medium text-[14px] leading-[20px] tracking-[0px]"
               >
                 {t("sitemap.miceSolutions")}
               </Link>
               <Link
-                href={`/${locale}/support`}
+                href={`/support`}
                 className="block text-[#FFFFFF] opacity-70 hover:opacity-100 hover:text-white font-medium text-[14px] leading-[20px] tracking-[0px]"
               >
                 {t("sitemap.support")}

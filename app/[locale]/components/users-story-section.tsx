@@ -91,7 +91,9 @@ const UsersStorySection = async () => {
         className="w-full mt-6 flex justify-center"
       >
         <Link
-          href={"/contact"}
+          href={"https://www.myrealtrip.com/guides/9173"}
+          target="_blank"
+          rel="noopener noreferrer"
           className="group inline-flex gap-4 items-center justify-between rounded-[0.5rem] bg-highlight-blue py-2 pl-5 pr-1 text-white transition-all hover:bg-highlight-blue/80"
         >
           <span

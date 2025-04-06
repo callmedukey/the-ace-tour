@@ -193,18 +193,29 @@ export function BookingForm({ className }: BookingFormProps) {
 
     // Special case for San Diego to LAX route
     if (selectedRoute === "San Diego to LAX") {
-      // If destination is LAX, use the normal LAX price
-      if (formData.to === 'LAX (Terminal 3 "Shared Rides")') {
+      // Check if we have a specific price in the pricing map
+      const originPrices = PRICING_MAP[formData.from];
+      if (originPrices && originPrices[formData.to]) {
+        // Use the price from the pricing map
+        const oneWayPrice = originPrices[formData.to];
         basePrice =
           formData.tripType === "Round Trip"
-            ? 59 * 2 * 0.85 // 15% discount for round trip
-            : 59;
+            ? oneWayPrice * 2 * 0.85 // 15% discount for round trip
+            : oneWayPrice;
       } else {
-        // For all other destinations, use Irvine's price
-        basePrice =
-          formData.tripType === "Round Trip"
-            ? 40 * 2 * 0.85 // 15% discount for round trip
-            : 40;
+        // If no specific price found, use default pricing
+        if (formData.to === 'LAX (Terminal 3 "Shared Rides")') {
+          basePrice =
+            formData.tripType === "Round Trip"
+              ? 59 * 2 * 0.85 // 15% discount for round trip
+              : 59;
+        } else {
+          // For all other destinations, use Irvine's price
+          basePrice =
+            formData.tripType === "Round Trip"
+              ? 40 * 2 * 0.85 // 15% discount for round trip
+              : 40;
+        }
       }
     } else {
       // Normal pricing logic for other routes
@@ -261,9 +272,6 @@ export function BookingForm({ className }: BookingFormProps) {
     if (selectedRoute === "LAX to San Diego") {
       return [
         'LAX (Terminal 3 "Shared Rides")',
-        "Irvine (H Mart)",
-        "Carmel Valley (Pavillions)",
-        "Mira Mesa (H Mart)",
       ];
     }
     // If SD-LA route is selected
@@ -292,30 +300,39 @@ export function BookingForm({ className }: BookingFormProps) {
 
     // Special handling for LAX to San Diego route
     if (selectedRoute === "LAX to San Diego") {
-      const locations = [
-        'LAX (Terminal 3 "Shared Rides")',
+      // Since only LAX is available as departure, return all San Diego destinations
+      return [
         "Irvine (H Mart)",
         "Carmel Valley (Pavillions)",
         "Mira Mesa (H Mart)",
         "Convoy (H Mart)",
       ];
-      const currentIndex = locations.indexOf(formData.from);
-      if (currentIndex >= 0) {
-        // Return all locations that come after the current one
-        return locations.slice(currentIndex + 1);
-      }
-      return [];
     }
 
     // If it's a San Diego location
     if (LOCATION_GROUPS.san_diego.includes(formData.from)) {
       const currentIndex = LOCATION_GROUPS.san_diego.indexOf(formData.from);
-
-      // Show only locations that come after the current one in the sequence
-      return [
-        ...LOCATION_GROUPS.san_diego.slice(currentIndex + 1),
-        ...LOCATION_GROUPS.lax,
-      ];
+      
+      // Apply specific restrictions based on origin
+      if (formData.from === "Convoy (H Mart)") {
+        // For Convoy, exclude Mira Mesa and Carmel Valley
+        return [
+          "Irvine (H Mart)",
+          ...LOCATION_GROUPS.lax,
+        ];
+      } else if (formData.from === "Mira Mesa (H Mart)") {
+        // For Mira Mesa, exclude Carmel Valley
+        return [
+          "Irvine (H Mart)",
+          ...LOCATION_GROUPS.lax,
+        ];
+      } else {
+        // For other San Diego locations, show all locations that come after in the sequence
+        return [
+          ...LOCATION_GROUPS.san_diego.slice(currentIndex + 1),
+          ...LOCATION_GROUPS.lax,
+        ];
+      }
     }
 
     // For Vegas routes
@@ -429,6 +446,14 @@ export function BookingForm({ className }: BookingFormProps) {
       const locale = window.location.pathname.split("/")[1] || "en";
       console.log("📍 [BookingForm] Detected locale:", locale);
 
+      // Determine the base URL for the return URL
+      // Use the production domain in production, otherwise use the current origin
+      const baseUrl = window.location.hostname === 'localhost'
+        ? window.location.origin
+        : 'https://theace.ai';
+      
+      console.log("📍 [BookingForm] Using base URL for return:", baseUrl);
+
       // Create Stripe Checkout Session
       console.log(
         "🔄 [BookingForm] Sending request to create checkout session..."
@@ -441,7 +466,7 @@ export function BookingForm({ className }: BookingFormProps) {
         body: JSON.stringify({
           ...formData,
           price: calculatePrice(),
-          returnUrl: `/${locale}/shuttle-service`,
+          returnUrl: `${baseUrl}/${locale}/shuttle-service`,
           // Ensure luggage is explicitly included
           luggage: formData.luggage,
         }),

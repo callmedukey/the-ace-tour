@@ -5,7 +5,7 @@ import { CreateInquiryType } from "@/db/schemas";
 import { cn } from "@/lib/cn";
 import { ActionResponse } from "@/types/actions";
 import { useActionState } from "react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { createInquiry } from "@/actions/inquiries";
 const initialState: ActionResponse<CreateInquiryType & { locale: string }> = {
   success: false,
@@ -14,6 +14,7 @@ const initialState: ActionResponse<CreateInquiryType & { locale: string }> = {
 
 export function SupportForm({ className }: { className?: string }) {
   const locale = useLocale();
+  const t = useTranslations("InquiryForm");
   const [state, formAction, isPending] = useActionState(
     createInquiry,
     initialState
@@ -28,7 +29,7 @@ export function SupportForm({ className }: { className?: string }) {
             htmlFor="type"
             className="text-base font-medium leading-6 tracking-[0] text-[#262626]"
           >
-            Inquiry Type
+            {t("inquiryType")}
           </label>
           <div className="mt-[16px]">
             <select
@@ -38,10 +39,12 @@ export function SupportForm({ className }: { className?: string }) {
               defaultValue={state?.inputs?.type}
               className="w-full border border-[#E5E7EB] rounded-[22px] px-[16px] py-[24px] bg-white focus:border-transparent placeholder:text-[#D4D4D4] placeholder:text-base placeholder:font-medium placeholder:leading-6 placeholder:tracking-normal"
             >
-              <option value="">-Select-</option>
-              <option value="Travel Consultion">Travel Consultation</option>
-              <option value="Shuttle Service">Shuttle Service</option>
-              <option value="MICE Service">MICE Service</option>
+              <option value="">{t("inquiryTypePlaceHolder")}</option>
+              <option value="Travel Consultion">
+                {t("travelConsultation")}
+              </option>
+              <option value="Shuttle Service">{t("shuttleService")}</option>
+              <option value="MICE Service">{t("miceService")}</option>
             </select>
             {state?.errors?.type && (
               <div className="text-red-500 text-sm mt-1">
@@ -56,7 +59,7 @@ export function SupportForm({ className }: { className?: string }) {
             htmlFor="name"
             className="text-base font-medium leading-6 tracking-[0] text-[#262626]"
           >
-            Full Name
+            {t("name")}
           </label>
           <div className="mt-[16px]">
             <input
@@ -65,7 +68,7 @@ export function SupportForm({ className }: { className?: string }) {
               type="text"
               required
               defaultValue={state?.inputs?.name}
-              placeholder="e.g Daisy Daisies"
+              placeholder={t("namePlaceHolder")}
               className="w-full border border-[#E5E7EB] rounded-[22px] px-[16px] py-[24px] bg-white focus:border-transparent placeholder:text-[#D4D4D4] placeholder:text-base placeholder:font-medium placeholder:leading-6 placeholder:tracking-normal"
             />
             {state?.errors?.name && (
@@ -81,7 +84,7 @@ export function SupportForm({ className }: { className?: string }) {
             htmlFor="email"
             className="text-base font-medium leading-6 tracking-[0] text-[#262626]"
           >
-            Email address
+            {t("email")}
           </label>
           <div className="mt-[16px]">
             <input
@@ -90,7 +93,7 @@ export function SupportForm({ className }: { className?: string }) {
               type="email"
               required
               defaultValue={state?.inputs?.email}
-              placeholder="e.g Daisy@gmail.com"
+              placeholder={t("emailPlaceHolder")}
               className="w-full border border-[#E5E7EB] rounded-[22px] px-[16px] py-[24px] bg-white focus:border-transparent placeholder:text-[#D4D4D4] placeholder:text-base placeholder:font-medium placeholder:leading-6 placeholder:tracking-normal"
             />
             {state?.errors?.email && (
@@ -106,7 +109,7 @@ export function SupportForm({ className }: { className?: string }) {
             htmlFor="message"
             className="text-base font-medium leading-6 tracking-[0] text-[#262626]"
           >
-            Your inquiry
+            {t("yourInquiry")}
           </label>
           <div className="mt-[16px]">
             <textarea
@@ -114,7 +117,7 @@ export function SupportForm({ className }: { className?: string }) {
               name="message"
               required
               defaultValue={state?.inputs?.message}
-              placeholder="Type your message..."
+              placeholder={t("yourInquiryPlaceHolder")}
               className="w-full h-[150px] border border-[#E5E7EB] rounded-[22px] px-4 pt-[15px] pb-8 bg-white focus:border-transparent resize-none placeholder:text-[#D4D4D4] placeholder:text-base placeholder:font-medium placeholder:leading-6 placeholder:tracking-normal"
             />
             {state?.errors?.message && (
@@ -134,7 +137,7 @@ export function SupportForm({ className }: { className?: string }) {
           className="relative w-full h-[48px] rounded-[8px] bg-[#3B82F6] text-white text-xl font-medium leading-6 tracking-[0] cursor-pointer z-10 hover:bg-[#2563EB] flex items-center justify-between px-6"
           disabled={isPending}
         >
-          <span>{isPending ? "Sending..." : "Send Inquiry"}</span>
+          <span>{isPending ? t("submitting") : t("submit")}</span>
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white">
             <svg
               className="h-5 w-5 transform text-[#3B82F6] transition-transform duration-200 group-hover:translate-x-1"

@@ -6,7 +6,12 @@ import { deleteMice } from "@/actions/mice";
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 interface MiceCardProps {
   miceData: {
@@ -42,7 +47,11 @@ export function MiceCard({ miceData, onDelete }: MiceCardProps) {
   const [showNewPostForm, setShowNewPostForm] = useState(false);
 
   const handleDelete = async () => {
-    if (!confirm(`Are you sure you want to delete "${miceData.ENGtitle}"? This will also delete all associated posts.`)) {
+    if (
+      !confirm(
+        `Are you sure you want to delete "${miceData.ENGtitle}"? This will also delete all associated posts.`
+      )
+    ) {
       return;
     }
 
@@ -77,46 +86,50 @@ export function MiceCard({ miceData, onDelete }: MiceCardProps) {
         <h2 className="text-2xl font-bold">
           {miceData.ENGtitle} / {miceData.KOtitle}
         </h2>
-        <Button 
-          variant="destructive" 
+        <Button
+          variant="destructive"
           onClick={handleDelete}
           disabled={isDeleting}
         >
           {isDeleting ? "Deleting..." : "Delete MICE"}
         </Button>
       </div>
-      
+
       <p className="text-gray-500 mb-6">ID: {miceData.id}</p>
-      
-      <Tabs defaultValue="details" onValueChange={setActiveTab} value={activeTab}>
+
+      <Tabs
+        defaultValue="details"
+        onValueChange={setActiveTab}
+        value={activeTab}
+      >
         <TabsList className="mb-6">
           <TabsTrigger value="details">MICE Details</TabsTrigger>
-          <TabsTrigger value="posts">Posts ({miceData.posts.length})</TabsTrigger>
+          <TabsTrigger value="posts">
+            Posts ({miceData.posts.length})
+          </TabsTrigger>
         </TabsList>
-        
+
         <TabsContent value="details">
           <MiceForm miceData={miceData} />
         </TabsContent>
-        
+
         <TabsContent value="posts">
           <div className="space-y-6">
             <div className="flex justify-between items-center">
               <h3 className="text-xl font-semibold">Posts</h3>
-              <Button 
-                onClick={() => setShowNewPostForm(!showNewPostForm)}
-              >
+              <Button onClick={() => setShowNewPostForm(!showNewPostForm)}>
                 {showNewPostForm ? "Cancel" : "Add New Post"}
               </Button>
             </div>
-            
+
             {showNewPostForm && (
-              <PostForm 
-                miceId={miceData.id} 
-                isNew={true} 
+              <PostForm
+                miceId={miceData.id}
+                isNew={true}
                 onSuccess={handlePostSuccess}
               />
             )}
-            
+
             {miceData.posts.length > 0 ? (
               <Accordion type="single" collapsible className="w-full">
                 {miceData.posts.map((post) => (
@@ -125,9 +138,9 @@ export function MiceCard({ miceData, onDelete }: MiceCardProps) {
                       {post.ENGtitle} / {post.KOtitle}
                     </AccordionTrigger>
                     <AccordionContent>
-                      <PostForm 
-                        miceId={miceData.id} 
-                        post={post} 
+                      <PostForm
+                        miceId={miceData.id}
+                        post={post}
                         onSuccess={() => window.location.reload()}
                       />
                     </AccordionContent>

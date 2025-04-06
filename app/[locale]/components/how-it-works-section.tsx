@@ -580,9 +580,7 @@ const HowItWorksSection = async () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.7 }}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
-                  className={`w-full min-h-[8.75rem] sm:min-h-[10rem] md:min-h-[11.5rem] ${
-                    index === 2 ? "bg-white" : "bg-highlight-blue/15"
-                  } rounded-tl-xl rounded-tr-xl rounded-bl-xl sm:rounded-tl-2xl sm:rounded-tr-2xl sm:rounded-bl-2xl p-4 sm:p-6 md:p-8 border border-[#E5E7EB]`}
+                  className={`w-full min-h-[8.75rem] sm:min-h-[10rem] md:min-h-[11.5rem] ${"bg-highlight-blue/15"} rounded-tl-xl rounded-tr-xl rounded-bl-xl sm:rounded-tl-2xl sm:rounded-tr-2xl sm:rounded-bl-2xl p-4 sm:p-6 md:p-8 border border-[#E5E7EB]`}
                 >
                   <div className="flex flex-col">
                     <div className="flex items-center gap-3 sm:gap-4 pb-4">
@@ -617,7 +615,7 @@ const HowItWorksSection = async () => {
             className="w-full mt-6 flex justify-center lg:justify-start"
           >
             <Link
-              href={"/contact"}
+              href={"/travel-packages/la-departure"}
               className="group inline-flex w-full max-w-[35rem] items-center justify-between rounded-[0.5rem] bg-highlight-blue py-2 pl-5 pr-1 text-white transition-all hover:bg-highlight-blue/80"
             >
               <span

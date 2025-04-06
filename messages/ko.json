@@ -192,13 +192,16 @@
       }
     }
   },
+  "MiceCTA": {
+    "button": "문의하기"
+  },
 
   "Footer": {
     "newsletter": {
       "title": "뉴스레터",
       "description": "맞춤형 혜택과 여행 프로모션 정보를 받아보세요!",
       "placeholder": "이메일주소를 입력해주세요",
-      "button": "구둑하기"
+      "button": "구독하기"
     },
     "sitemap": {
       "title": "Sitemap",
@@ -276,6 +279,22 @@
   "Index": {
     "title": "에이스 투어",
     "description": "당신의 여행 파트너"
+  },
+
+  "InquiryForm": {
+    "inquiryType": "문의 유형",
+    "miceService": "MICE 서비스",
+    "travelConsultation": "여행 문의",
+    "shuttleService": "셔틀 서비스",
+    "inquiryTypePlaceHolder": "문의 유형을 선택해주세요",
+    "name": "이름",
+    "namePlaceHolder": "이름을 입력해주세요",
+    "email": "이메일 주소",
+    "emailPlaceHolder": "이메일 주소를 입력해주세요",
+    "yourInquiry": "문의 내용",
+    "yourInquiryPlaceHolder": "문의 내용을 입력해주세요",
+    "submit": "문의하기",
+    "submitting": "제출중..."
   },
 
   "BookingForm": {

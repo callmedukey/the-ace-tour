@@ -5,7 +5,7 @@ import { Link, usePathname } from "@/i18n/navigation";
 import Image from "next/image";
 import { useLocale } from "next-intl";
 
-import EnglishFlag from "@/public/flags/uk.png";
+import EnglishFlag from "@/public/flags/usa.svg";
 import KoreanFlag from "@/public/flags/kr.png";
 import { cn } from "@/lib/cn";
 
@@ -35,8 +35,8 @@ export default function LanguageSwitcher({
             src={EnglishFlag}
             alt={"English Flag"}
             className="w-5 h-auto"
-            quality={100}
             priority={true}
+            unoptimized
           />
         ) : (
           <Image

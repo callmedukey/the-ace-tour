@@ -77,11 +77,11 @@ const HeroSection = async () => {
         <video
           className="w-full h-full object-cover"
           autoPlay
-          loop
+          // loop
           muted
           playsInline
         >
-          <source src={"/home/videoHome.mp4"} type="video/mp4" />
+          <source src={"/home/hollywood-la.mp4"} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </motion.div>
