@@ -933,7 +933,7 @@ export function BookingForm({ className }: BookingFormProps) {
               <div className="grid gap-2">
                 {renderLabel(
                   selectedRoute === "Los Angeles to Las Vegas"
-                    ? t("pickUpAddresss")
+                    ? t("pickUpAddress")
                     : t("pickUpAddress1"),
                   true
                 )}
