@@ -320,7 +320,10 @@
     "namePlaceHolder": "이름을 입력해주세요",
     "email": "이메일",
     "emailPlaceHolder": "이메일을 입력해주세요",
-    "address": "주소",
+    "pickUpAddress": "픽업 주소",
+    "pickUpAddress1": "픽업 주소 (호텔명)",
+    "dropOffAddress": "드랍 주소 (호텔명)",
+    "dropOffAddress1": "드랍 주소",
     "extraLuggageFee": "추가 수하물 비용",
     "luggageInfo": {
       "one": "승객 1인당 무료 수하물 1개가 제공됩니다",

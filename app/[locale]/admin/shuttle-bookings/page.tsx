@@ -83,7 +83,8 @@ const page = async ({
               </TableHead>
               <TableHead className="whitespace-nowrap">Return Time</TableHead>
               <TableHead className="whitespace-nowrap">Passengers</TableHead>
-              <TableHead className="whitespace-nowrap">Address</TableHead>
+              <TableHead className="whitespace-nowrap">Pick Up Address</TableHead>
+              <TableHead className="whitespace-nowrap">Drop Off Address</TableHead>
               <TableHead className="whitespace-nowrap">Price</TableHead>
               <TableHead className="whitespace-nowrap">Status</TableHead>
               <TableHead className="whitespace-nowrap">
@@ -144,7 +145,10 @@ const page = async ({
                   {booking.passengers}
                 </TableCell>
                 <TableCell className="whitespace-nowrap">
-                  {booking.address}
+                  {booking.pickUpaddress || "-"}
+                </TableCell>
+                <TableCell className="whitespace-nowrap">
+                  {booking.dropOffaddress || "-"}
                 </TableCell>
                 <TableCell className="whitespace-nowrap">
                   ${booking.price}

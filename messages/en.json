@@ -320,7 +320,10 @@
     "namePlaceHolder": "Enter your full name",
     "email": "Email Address",
     "emailPlaceHolder": "Enter your email address",
-    "address": "Street Address",
+    "pickUpAddress": "Pick Up Address",
+    "pickUpAddress1": "Pick Up Address (Hotel Name)",
+    "dropOffAddress": "Drop Off Address (Hotel Name)",
+    "dropOffAddress1": "Drop Off Address",
     "extraLuggageFee": "Extra Luggage Fee",
     "luggageInfo": {
       "one": "Each passenger is entitled to 1 free checked luggage item",

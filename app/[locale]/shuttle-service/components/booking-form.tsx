@@ -25,7 +25,8 @@ interface BookingFormData {
   departureTime: string;
   returnTime: string;
   passengers: number;
-  address: string;
+  pickUpaddress: string;
+  dropOffaddress: string;
   customerName: string;
   customerEmail: string;
   luggage: number;
@@ -103,7 +104,8 @@ export function BookingForm({ className }: BookingFormProps) {
     departureTime: "5:30 AM",
     returnTime: "5:30 AM",
     passengers: 1,
-    address: "",
+    pickUpaddress: "",
+    dropOffaddress: "",
     customerName: "",
     customerEmail: "",
     luggage: 1, // Default to 1 luggage per passenger
@@ -111,8 +113,18 @@ export function BookingForm({ className }: BookingFormProps) {
 
   const [selectedRoute, setSelectedRoute] = React.useState("");
   const [availabilityInfo, setAvailabilityInfo] = React.useState<{
-    departing?: { count: number; passengerCount: number; remainingSpots: number; maxSpots: number };
-    returning?: { count: number; passengerCount: number; remainingSpots: number; maxSpots: number };
+    departing?: {
+      count: number;
+      passengerCount: number;
+      remainingSpots: number;
+      maxSpots: number;
+    };
+    returning?: {
+      count: number;
+      passengerCount: number;
+      remainingSpots: number;
+      maxSpots: number;
+    };
   }>({});
 
   // Add a function to check availability when date changes
@@ -270,9 +282,7 @@ export function BookingForm({ className }: BookingFormProps) {
   const getFilteredLocations = React.useCallback(() => {
     // If LAX to SD route is selected
     if (selectedRoute === "LAX to San Diego") {
-      return [
-        'LAX (Terminal 3 "Shared Rides")',
-      ];
+      return ['LAX (Terminal 3 "Shared Rides")'];
     }
     // If SD-LA route is selected
     if (selectedRoute === "San Diego to LAX" || selectedRoute === "") {
@@ -312,20 +322,14 @@ export function BookingForm({ className }: BookingFormProps) {
     // If it's a San Diego location
     if (LOCATION_GROUPS.san_diego.includes(formData.from)) {
       const currentIndex = LOCATION_GROUPS.san_diego.indexOf(formData.from);
-      
+
       // Apply specific restrictions based on origin
       if (formData.from === "Convoy (H Mart)") {
         // For Convoy, exclude Mira Mesa and Carmel Valley
-        return [
-          "Irvine (H Mart)",
-          ...LOCATION_GROUPS.lax,
-        ];
+        return ["Irvine (H Mart)", ...LOCATION_GROUPS.lax];
       } else if (formData.from === "Mira Mesa (H Mart)") {
         // For Mira Mesa, exclude Carmel Valley
-        return [
-          "Irvine (H Mart)",
-          ...LOCATION_GROUPS.lax,
-        ];
+        return ["Irvine (H Mart)", ...LOCATION_GROUPS.lax];
       } else {
         // For other San Diego locations, show all locations that come after in the sequence
         return [
@@ -381,10 +385,13 @@ export function BookingForm({ className }: BookingFormProps) {
     });
 
     // Validate address if required
-    if (isAddressRequired() && !formData.address.trim()) {
+    if (
+      isAddressRequired() &&
+      (!formData.pickUpaddress.trim() || !formData.dropOffaddress.trim())
+    ) {
       console.warn("🚫 [BookingForm] Address validation failed");
       alert(
-        "Please enter your complete street address for door-to-door service."
+        "Please enter your complete pick up and drop off addresses for door-to-door service."
       );
       return;
     }
@@ -433,8 +440,12 @@ export function BookingForm({ className }: BookingFormProps) {
         }
 
         // Check if adding these passengers would exceed capacity for return journey
-        if ((returnBookingCountResult.remainingSpots ?? 0) < formData.passengers) {
-          console.warn("🚫 [BookingForm] Not enough capacity for passengers on return journey");
+        if (
+          (returnBookingCountResult.remainingSpots ?? 0) < formData.passengers
+        ) {
+          console.warn(
+            "🚫 [BookingForm] Not enough capacity for passengers on return journey"
+          );
           alert(
             `We apologize, but there are only ${returnBookingCountResult.remainingSpots} spots available for the return date. Your booking requires ${formData.passengers} spots.`
           );
@@ -446,13 +457,8 @@ export function BookingForm({ className }: BookingFormProps) {
       const locale = window.location.pathname.split("/")[1] || "en";
       console.log("📍 [BookingForm] Detected locale:", locale);
 
-      // Determine the base URL for the return URL
-      // Use the production domain in production, otherwise use the current origin
-      const baseUrl = window.location.hostname === 'localhost'
-        ? window.location.origin
-        : 'https://theace.ai';
-      
-      console.log("📍 [BookingForm] Using base URL for return:", baseUrl);
+      // Get the current locale for the return URL path
+      console.log("📍 [BookingForm] Detected locale:", locale);
 
       // Create Stripe Checkout Session
       console.log(
@@ -466,9 +472,11 @@ export function BookingForm({ className }: BookingFormProps) {
         body: JSON.stringify({
           ...formData,
           price: calculatePrice(),
-          returnUrl: `${baseUrl}/${locale}/shuttle-service`,
-          // Ensure luggage is explicitly included
+          returnUrl: `/${locale}/shuttle-service`,
+          // Ensure all fields are explicitly included
           luggage: formData.luggage,
+          pickUpaddress: formData.pickUpaddress,
+          dropOffaddress: formData.dropOffaddress,
         }),
       });
 
@@ -799,7 +807,8 @@ export function BookingForm({ className }: BookingFormProps) {
                     ...formData,
                     from: route.from,
                     to: route.to,
-                    address: "", // Reset address when changing routes
+                    pickUpaddress: "", // Reset addresses when changing routes
+                    dropOffaddress: "",
                   });
                 }}
                 className={cn(
@@ -916,20 +925,49 @@ export function BookingForm({ className }: BookingFormProps) {
             </div>
           </div>
 
-          {isAddressRequired() && (
-            <div className="grid gap-2">
-              {renderLabel(t("address"), true)}
-              <input
-                type="text"
-                value={formData.address}
-                onChange={(e) =>
-                  setFormData({ ...formData, address: e.target.value })
-                }
-                placeholder="Enter your complete street address"
-                className={cn(inputStyles, "w-full sm:w-full")}
-                required
-              />
-            </div>
+          {/* Address fields */}
+          {(isAddressRequired() ||
+            selectedRoute === "Los Angeles to Las Vegas" ||
+            selectedRoute === "Las Vegas to Los Angeles") && (
+            <>
+              <div className="grid gap-2">
+                {renderLabel(
+                  selectedRoute === "Los Angeles to Las Vegas"
+                    ? t("pickUpAddresss")
+                    : t("pickUpAddress1"),
+                  true
+                )}
+                <input
+                  type="text"
+                  value={formData.pickUpaddress}
+                  onChange={(e) =>
+                    setFormData({ ...formData, pickUpaddress: e.target.value })
+                  }
+                  placeholder="Enter your complete pick up address"
+                  className={cn(inputStyles, "w-full sm:w-full")}
+                  required
+                />
+              </div>
+
+              <div className="grid gap-2">
+                {renderLabel(
+                  selectedRoute === "Los Angeles to Las Vegas"
+                    ? t("dropOffAddress")
+                    : t("dropOffAddress1"),
+                  true
+                )}
+                <input
+                  type="text"
+                  value={formData.dropOffaddress}
+                  onChange={(e) =>
+                    setFormData({ ...formData, dropOffaddress: e.target.value })
+                  }
+                  placeholder="Enter your complete drop off address"
+                  className={cn(inputStyles, "w-full sm:w-full")}
+                  required
+                />
+              </div>
+            </>
           )}
 
           <div className="grid gap-4 sm:grid-cols-2">
@@ -1154,7 +1192,8 @@ export function BookingForm({ className }: BookingFormProps) {
                   available
                   <span className="text-gray-500 ml-2">
                     ({availabilityInfo.departing.passengerCount}/
-                    {availabilityInfo.departing.maxSpots} passengers booked across {availabilityInfo.departing.count} bookings)
+                    {availabilityInfo.departing.maxSpots} passengers booked
+                    across {availabilityInfo.departing.count} bookings)
                   </span>
                 </p>
                 <div className="w-full h-2 bg-gray-200 rounded-full mt-1">
@@ -1185,7 +1224,8 @@ export function BookingForm({ className }: BookingFormProps) {
                   available
                   <span className="text-gray-500 ml-2">
                     ({availabilityInfo.returning.passengerCount}/
-                    {availabilityInfo.returning.maxSpots} passengers booked across {availabilityInfo.returning.count} bookings)
+                    {availabilityInfo.returning.maxSpots} passengers booked
+                    across {availabilityInfo.returning.count} bookings)
                   </span>
                 </p>
                 <div className="w-full h-2 bg-gray-200 rounded-full mt-1">

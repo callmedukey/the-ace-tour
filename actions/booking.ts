@@ -82,7 +82,8 @@ export async function createPendingBooking(bookingData: {
   departureTime: string;
   returnTime?: string;
   passengers: number;
-  address?: string;
+  pickUpaddress: string;
+  dropOffaddress: string;
   price: number;
   stripeId: string;
   luggage: number;
@@ -109,7 +110,8 @@ export async function createPendingBooking(bookingData: {
       departureTime: bookingData.departureTime,
       returnTime: bookingData.returnTime,
       passengers: bookingData.passengers,
-      address: bookingData.address,
+      pickUpaddress: bookingData.pickUpaddress,
+      dropOffaddress: bookingData.dropOffaddress,
       price: bookingData.price,
       luggage: bookingData.luggage,
       status: "CONFIRMED", // Using the enum value

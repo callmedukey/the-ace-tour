@@ -19,7 +19,8 @@ interface CheckoutRequestBody {
   departureTime: string;
   returnTime?: string;
   passengers: number;
-  address?: string;
+  pickUpaddress: string;
+  dropOffaddress: string;
   price: string;
   returnUrl: string;
   luggage: number;
@@ -49,7 +50,8 @@ export async function POST(request: NextRequest) {
       departureTime,
       returnTime,
       passengers,
-      address,
+      pickUpaddress,
+      dropOffaddress,
       price,
       returnUrl,
       luggage,
@@ -72,7 +74,8 @@ export async function POST(request: NextRequest) {
       departureTime,
       returnTime,
       passengers,
-      address,
+      pickUpaddress,
+      dropOffaddress,
       price: parseFloat(price),
       stripeId,
       luggage,
