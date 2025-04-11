@@ -134,7 +134,7 @@ export default async function page({
     const post = await getPostById(idToUse);
 
     if (!post) {
-      redirect({
+      return redirect({
         href: "/mice-solutions",
         locale: resolvedParams.locale,
       });
