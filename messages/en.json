@@ -2,7 +2,57 @@
   "Metadata": {
     "title": "Ace Tour",
     "description": "Your Travel Partner",
-    "keywords": "Ace Tour, Travel, Western USA, Shuttle Service, MICE Solutions"
+    "keywords": "US Travel, US Travel Destinations, Western US Travel, Famous Tourist Attractions in the US, Western US Travel Package, US Package Travel, Western US Package, Western US Travel, Western US Travel Destinations, Western US Travel, Semi-Package Tour, 9 Nights 11 Days Western US Package, Independent Travel in the US, Customized Travel in the US, Small Group Tours in the US, Family Travel in the US, Group Travel in the US, Recommended US Travel Itineraries, US Travel Tips, US Rental Car Travel, US Road Trip, US Camping Travel, US National Park Tour, Western US Rental Car Travel, Western US Road Trip, Western US Independent Travel, Western US Sightseeing Route, Los Angeles Tourism, Things to Do in LA, LA Attractions, LA Tour, LA City Tour, Griffith Observatory, Griffith Observatory, Hollywood, Hollywood Sign, Hollywood Sign, Hollywood Walk of Fame, Universal Studios, Universal Studios Hollywood, Universal Studios Hollywood, Universal Studios Hollywood Tickets, Universal Studios California, Universal Citywalk, Getty Center, The Getty, Getty Center, Getty Museum, Getty Museum, Getty Villa, Getty Villa, Beverly Hills, Pink Wall, Sunset Today, Joshua Tree, Venice Canals, Santa Monica, Santa Monica, San Diego Travel, San Diego, San Diego Padres Package, San Francisco 6-Hour Day Tour, Golden Gate Bridge, Golden Gate Bridge, San Francisco Golden Gate, Golden Gate Bridge, Silicon Valley Tour, Stanford University, Las Vegas Tourism, Las Vegas Outlet, Grand Canyon Tour, Grand Canyon Tour 1 Night 2 Days, Grand Canyon Tour 2 Nights 3 Days, Monument Valley, Horseshoe Bend, Antelope Canyon, Zion Canyon, Bryce Canyon, Lake Tahoe, Los Angeles Shuttle Service, LA 6-Hour Day Tour, Las Vegas Sending Tour, US Airport Pickup Service, LAX Airport Pickup, San Francisco Airport Pickup, US Airport Shuttle Bus, US Express Bus Travel, Recommended US Rental Car Services, LA Dodgers Game, LA Dodgers Package, San Diego Padres, MLB/NBA/NFL/NHL Game Viewing, Dodger Stadium, San Diego Padres vs. LA Dodgers Game, NBA Game Viewing, NFL Game Viewing, NHL Game Viewing, MLB Ticket Booking, US Sports Game Package, Hollywood Celebrity Tour, US Visa, US Tourist Visa, US Visa Application, US Tourist Visa Application, US Travel Visa, ESTA, ESTA Visa, ESTA Visa Application, How to Apply for ESTA, US Visa-Free Stay Duration, US Tourist Visa Stay Duration, US Visa Issuance, US eSIM, Recommended US eSIM, US eSIM, Buying a Local US SIM, Must-See Places in the US, Must-Visit Places in the US, Famous Places in the US, US Landmarks, US Architecture, US Tourist Spots, Famous US Attractions, Things to Do in the US, Western US Travel Course, Recommended US Travel Destinations",
+    "siteName": "The Ace Tour",
+    "siteDescription": "Your trusted travel partner connecting Korea and the USA with unforgettable experiences in Western USA",
+    "siteKeywords": "Ace Tour, Travel, Western USA, Los Angeles, Las Vegas, Grand Canyon, Shuttle Service, MICE Solutions, Korean Travel Agency",
+    "logoAlt": "The Ace Tour Logo",
+
+    "MiceSolutions": {
+      "title": "MICE Solutions | The Ace Tour",
+      "description": "Professional MICE services for meetings, incentives, conferences, and events in Western USA. Customized solutions for corporate clients.",
+      "keywords": "MICE, corporate events, business meetings, conferences, incentive travel, Western USA, Los Angeles, Las Vegas",
+      "imageAlt": "MICE Solutions by The Ace Tour"
+    },
+
+    "ShuttleService": {
+      "title": "Shuttle Service | The Ace Tour",
+      "description": "Reliable shuttle services between LAX, San Diego, and Las Vegas. Comfortable, on-time, and affordable transportation.",
+      "keywords": "shuttle service, airport transfer, LAX, Los Angeles, San Diego, Las Vegas, transportation",
+      "imageAlt": "The Ace Tour Shuttle Service"
+    },
+
+    "Support": {
+      "title": "Customer Support | The Ace Tour",
+      "description": "Get assistance with your travel plans, shuttle bookings, or MICE events. Our team is ready to help with any questions.",
+      "keywords": "customer support, travel assistance, FAQ, contact, help, travel questions",
+      "imageAlt": "The Ace Tour Customer Support"
+    },
+
+    "TravelPackages": {
+      "title": "Travel Packages | The Ace Tour",
+      "description": "Explore Western USA with our premium travel packages. From Los Angeles to the Grand Canyon, experience the best of the West.",
+      "keywords": "travel packages, Western USA, Los Angeles, Las Vegas, Grand Canyon, guided tours, vacation packages",
+      "imageAlt": "The Ace Tour Travel Packages",
+
+      "la_departure": {
+        "title": "Los Angeles Departure | The Ace Tour",
+        "description": "Start your Western USA adventure from Los Angeles with our premium guided tours and packages.",
+        "keywords": "Los Angeles tours, LA departure, Western USA, guided tours, Hollywood, Beverly Hills"
+      },
+
+      "las_vegas_departure": {
+        "title": "Las Vegas Departure | The Ace Tour",
+        "description": "Begin your journey from Las Vegas with our expertly crafted tour packages to explore the Western USA.",
+        "keywords": "Las Vegas tours, Vegas departure, Grand Canyon, Western USA, guided tours"
+      },
+
+      "semi_package": {
+        "title": "Semi-Package Tours | The Ace Tour",
+        "description": "Enjoy the perfect balance of guided experiences and independent exploration with our semi-package tours.",
+        "keywords": "semi-package tours, flexible travel, Western USA, independent travel, guided tours"
+      }
+    }
   },
   "Header": {
     "menu": {

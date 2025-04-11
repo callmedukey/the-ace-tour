@@ -33,16 +33,36 @@ export const posts = pgTable("posts", {
   imgPath: text().notNull(),
   imgENGAlt: text().notNull(),
   imgKOAlt: text().notNull(),
+
+  mainKOContent: text().notNull(),
+  mainENGContent: text().notNull(),
+
   // This is a foreign key reference to the mice table
   miceId: uuid().references(() => mice.id),
   createdAt: text().$defaultFn(() => new Date().toISOString()),
   updatedAt: text().$onUpdateFn(() => new Date().toISOString()),
 });
 
-export const postsRelations = relations(posts, ({ one }) => ({
+export const postsRelations = relations(posts, ({ one, many }) => ({
   mice: one(mice, {
     fields: [posts.miceId],
     references: [mice.id],
+  }),
+  postImageImages: many(postImageImages),
+}));
+
+export const postImageImages = pgTable("postImageImages", {
+  id: uuid().primaryKey().defaultRandom(),
+  imgPath: text().notNull(),
+  imgENGAlt: text().notNull(),
+  imgKOAlt: text().notNull(),
+  postId: uuid().references(() => posts.id),
+});
+
+export const postImageImagesRelations = relations(postImageImages, ({ one }) => ({
+  post: one(posts, {
+    fields: [postImageImages.postId],
+    references: [posts.id],
   }),
 }));
 
@@ -123,6 +143,7 @@ export const CreatePostSchema = createInsertSchema(posts)
       .min(1, "Content is required")
       .max(5000, "Content cannot be longer than 5000 characters"),
     imgPath: z.string().min(1, "Image path is required"),
+
     imgKOAlt: z
       .string()
       .min(1, "Image alt text is required")
@@ -132,4 +153,17 @@ export const CreatePostSchema = createInsertSchema(posts)
       .min(1, "Image alt text is required")
       .max(200, "Image alt text cannot be longer than 200 characters"),
     miceId: z.string().uuid("Must be a valid UUID"),
+    postImageImages: z.array(
+      z.object({
+        imgPath: z.string().min(1, "Image path is required"),
+        imgENGAlt: z
+          .string()
+          .min(1, "Image alt text is required")
+          .max(200, "Image alt text cannot be longer than 200 characters"),
+        imgKOAlt: z
+          .string()
+          .min(1, "Image alt text is required")
+          .max(200, "Image alt text cannot be longer than 200 characters"),
+      })
+    ),
   });

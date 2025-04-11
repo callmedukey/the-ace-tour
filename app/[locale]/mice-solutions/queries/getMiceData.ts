@@ -15,11 +15,23 @@ async function fetchData() {
           KOtitle: true,
           ENGcontent: true,
           KOcontent: true,
+          mainENGContent: true,
+          mainKOContent: true,
           imgPath: true,
           imgENGAlt: true,
           imgKOAlt: true,
           createdAt: true,
         },
+        with: {
+          postImageImages: {
+            columns: {
+              id: true,
+              imgPath: true,
+              imgENGAlt: true,
+              imgKOAlt: true,
+            }
+          }
+        }
       },
     },
   });

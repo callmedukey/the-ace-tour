@@ -33,9 +33,17 @@ interface MiceCardProps {
       KOtitle: string;
       ENGcontent: string;
       KOcontent: string;
+      mainENGContent: string;
+      mainKOContent: string;
       imgPath: string;
       imgENGAlt: string;
       imgKOAlt: string;
+      postImageImages?: {
+        id: string;
+        imgPath: string;
+        imgENGAlt: string;
+        imgKOAlt: string;
+      }[];
     }[];
   };
   onDelete?: () => void;

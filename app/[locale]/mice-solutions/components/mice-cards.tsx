@@ -2,6 +2,7 @@ import Image from "next/image";
 import * as motion from "motion/react-client";
 import { getMiceData } from "../queries/getMiceData";
 import { getLocale } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 
 export async function MiceCards() {
   const miceData = await getMiceData();
@@ -14,10 +15,13 @@ export async function MiceCards() {
       KOtitle: "미팅 룸",
       ENGcontent: "Lorem ipsum dolor sit amet consectetur.",
       KOcontent: "Lorem ipsum dolor sit amet consectetur.",
+      mainENGContent: "<p>Lorem ipsum dolor sit amet consectetur.</p>",
+      mainKOContent: "<p>Lorem ipsum dolor sit amet consectetur.</p>",
       imgPath: "",
       imgENGAlt: "Lorem ipsum dolor sit amet consectetur.",
       imgKOAlt: "Lorem ipsum dolor sit amet consectetur.",
       createdAt: new Date().toISOString(),
+      postImageImages: [],
     },
     {
       id: "2",
@@ -25,10 +29,13 @@ export async function MiceCards() {
       KOtitle: "회의실",
       ENGcontent: "Lorem ipsum dolor sit amet consectetur.",
       KOcontent: "Lorem ipsum dolor sit amet consectetur.",
+      mainENGContent: "<p>Lorem ipsum dolor sit amet consectetur.</p>",
+      mainKOContent: "<p>Lorem ipsum dolor sit amet consectetur.</p>",
       imgPath: "",
       imgENGAlt: "Lorem ipsum dolor sit amet consectetur.",
       imgKOAlt: "Lorem ipsum dolor sit amet consectetur.",
       createdAt: new Date().toISOString(),
+      postImageImages: [],
     },
     {
       id: "3",
@@ -36,10 +43,13 @@ export async function MiceCards() {
       KOtitle: "라운지",
       ENGcontent: "Lorem ipsum dolor sit amet consectetur.",
       KOcontent: "Lorem ipsum dolor sit amet consectetur.",
+      mainENGContent: "<p>Lorem ipsum dolor sit amet consectetur.</p>",
+      mainKOContent: "<p>Lorem ipsum dolor sit amet consectetur.</p>",
       imgPath: "",
       imgENGAlt: "Lorem ipsum dolor sit amet consectetur.",
       imgKOAlt: "Lorem ipsum dolor sit amet consectetur.",
       createdAt: new Date().toISOString(),
+      postImageImages: [],
     },
   ];
 
@@ -50,14 +60,14 @@ export async function MiceCards() {
       <div className="relative w-full max-w-7xl py-8 sm:py-12 lg:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mx-auto">
           {displayCards.map((card, i) => (
-            <motion.div
-              key={card.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="flex flex-col w-full bg-white overflow-hidden"
-            >
+            <Link href={`/mice-solutions/${card.id}`} key={card.id}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="flex flex-col w-full bg-white overflow-hidden hover:shadow-md transition-shadow duration-300"
+              >
               {/* Image Container */}
               <div className="relative w-full aspect-[1.58] rounded-t-[1.25rem] rounded-bl-[1.25rem] overflow-hidden">
                 {card.imgPath ? (
@@ -105,7 +115,8 @@ export async function MiceCards() {
                   {card.ENGcontent}
                 </p>
               </div>
-            </motion.div>
+              </motion.div>
+            </Link>
           ))}
         </div>
       </div>

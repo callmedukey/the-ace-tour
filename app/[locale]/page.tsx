@@ -2,6 +2,7 @@ import { setRequestLocale } from "next-intl/server";
 import { use } from "react";
 
 import { getTranslations } from "next-intl/server";
+import { Viewport } from "next";
 import HeroSection from "./components/hero-section";
 import FirstSvgSeparator from "./components/first-svg-separator";
 import OurMissionSection from "./components/our-mission-section";
@@ -10,6 +11,13 @@ import HowItWorksSection from "./components/how-it-works-section";
 import UsersStorySection from "./components/users-story-section";
 
 export const revalidate = 604800;
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#ffffff",
+  colorScheme: "light",
+};
 
 export async function generateMetadata({
   params,
