@@ -8,6 +8,7 @@ export async function MiceCards() {
   const miceData = await getMiceData();
   const cards = miceData?.posts;
   const locale = await getLocale();
+
   const defaultCards = [
     {
       id: "1",
@@ -115,8 +116,8 @@ export async function MiceCards() {
                           }
                         )}
                   </span>
-                  <p className="text-base sm:text-[1.0625rem] font-semibold leading-6 sm:leading-7 tracking-[0] text-[#262626] line-clamp-1">
-                    {card.ENGcontent}
+                  <p className="text-base sm:text-[1.0625rem] font-semibold leading-6 sm:leading-7 tracking-[0] text-[#262626] line-clamp-2 break-all">
+                    {locale === "ko" ? card.KOcontent : card.ENGcontent}
                   </p>
                 </div>
               </motion.div>
