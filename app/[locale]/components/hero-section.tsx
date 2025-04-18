@@ -2,6 +2,9 @@ import DOMPurify from "isomorphic-dompurify";
 
 import * as motion from "motion/react-client";
 
+import Image from "next/image";
+import Airplanes from "@/public/home/airplanes.svg";
+
 import { cn } from "@/lib/cn";
 import { Link } from "@/i18n/navigation";
 import { getLocale, getTranslations } from "next-intl/server";
@@ -13,25 +16,38 @@ const HeroSection = async () => {
 
   return (
     <section className="">
-      <motion.h1
-        className={cn(
-          "title-text text-3xl text-gray-800 md:text-[3.25rem]  max-w-[36rem] tracking-[-0.02em] font-semibold",
-          locale === "en" && "max-w-[40.1rem]"
-        )}
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.7 }}
-        transition={{ duration: 0.8 }}
-        dangerouslySetInnerHTML={{
-          __html: DOMPurify.sanitize(
-            t.markup("title", {
-              important: (chunks) =>
-                `<span class="text-highlight-yellow inline">${chunks}</span>`,
-            })
-          ),
-        }}
-      />
-
+      <div className="flex">
+        <motion.h1
+          className={cn(
+            "title-text text-3xl text-gray-800 md:text-[3.25rem]  max-w-[36rem] tracking-[-0.02em] font-semibold",
+            locale === "en" && "max-w-[40.1rem]"
+          )}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.7 }}
+          transition={{ duration: 0.8 }}
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(
+              t.markup("title", {
+                important: (chunks) =>
+                  `<span class="text-highlight-yellow inline">${chunks}</span>`,
+              })
+            ),
+          }}
+        />
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.7 }}
+          transition={{ duration: 0.8 }}
+          className={cn(
+            "ml-auto mr-18 hidden lg:block",
+            locale === "ko" && "mr-2"
+          )}
+        >
+          <Image src={Airplanes} alt="Airplanes" unoptimized />
+        </motion.div>
+      </div>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
