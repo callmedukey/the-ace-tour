@@ -3,7 +3,7 @@
 import { Link, usePathname } from "@/i18n/navigation";
 import { useState } from "react";
 import Image from "next/image";
-import Logo from "@/public/the-ace-logo.webp";
+import Logo from "@/public/the-ace-logo.png";
 import { cn } from "@/lib/cn";
 
 import {
@@ -179,7 +179,7 @@ const Header = () => {
 
   return (
     <header className="px-4 max-w-screen-2xl mx-auto py-6 flex relative h-[6.5rem] items-center justify-center isolate">
-      <div className="w-28 absolute left-4">
+      <div className="absolute left-4 w-40">
         <Image src={Logo} quality={100} alt="The Ace Logo" priority />
       </div>
       <nav className="hidden gap-12 font-semibold lg:flex">

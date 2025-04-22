@@ -1,5 +1,5 @@
 "use client";
-
+import WhiteLogo from "@/public/the-ace-logo-white.png";
 import Image from "next/image";
 import { Link, usePathname } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
@@ -54,11 +54,9 @@ export function Footer() {
           <div className="w-full max-w-[354px] h-full mx-auto text-center sm:text-left">
             <div className="flex justify-center sm:justify-start">
               <Image
-                src="/LogoWhite.png"
+                src={WhiteLogo}
                 alt="ACE Tours Logo"
-                width={107}
-                height={55}
-                className="object-contain"
+                className="object-contain w-60"
               />
             </div>
             <div className="mt-[15px]">
