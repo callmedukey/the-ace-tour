@@ -8,7 +8,6 @@ export async function MiceCards() {
   const miceData = await getMiceData();
   const cards = miceData?.posts;
   const locale = await getLocale();
-
   const defaultCards = [
     {
       id: "1",
@@ -57,7 +56,7 @@ export async function MiceCards() {
   const displayCards = cards && cards.length > 0 ? cards : defaultCards;
 
   return (
-    <section className="relative flex justify-center w-full px-4 sm:px-6 lg:px-8 bg-white">
+    <section className="relative flex justify-center w-full px-4 sm:px-6 lg:px-8 -mt-52">
       <div className="relative w-full max-w-7xl py-8 sm:py-12 lg:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mx-auto">
           {displayCards.map((card, i) => (
@@ -71,7 +70,7 @@ export async function MiceCards() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="flex flex-col w-full bg-white overflow-hidden hover:shadow-md transition-shadow duration-300"
+                className="flex flex-col w-full overflow-clip rounded-2xl hover:shadow-md transition-shadow duration-300"
               >
                 {/* Image Container */}
                 <div className="relative w-full aspect-[1.58] rounded-t-[1.25rem] rounded-bl-[1.25rem] overflow-hidden">

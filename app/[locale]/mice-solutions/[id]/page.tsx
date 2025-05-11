@@ -45,6 +45,7 @@ export const generateStaticParams = async () => {
       });
     }
   }
+
   return postsWithLocales;
 };
 
@@ -57,7 +58,6 @@ export async function generateMetadata({
     // Safely resolve params with fallback
     const { locale, id } = await params;
     setRequestLocale(locale);
-
     const post = await getPostById(id);
 
     if (!post) {
@@ -122,7 +122,6 @@ export default async function page({
     const resolvedParams = (await params) || { locale: "en", id: "" };
     const localeToUse = resolvedParams.locale || "en";
     const idToUse = resolvedParams.id || "";
-
     // Set the locale for the request
     setRequestLocale(localeToUse);
 

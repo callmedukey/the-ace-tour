@@ -16,6 +16,7 @@ export const mice = pgTable("mice", {
   thirdValue: integer().notNull(),
   thirdValueENGText: text().notNull(),
   thirdValueKOText: text().notNull(),
+
   createdAt: text().$defaultFn(() => new Date().toISOString()),
   updatedAt: text().$onUpdateFn(() => new Date().toISOString()),
 });
@@ -30,6 +31,8 @@ export const posts = pgTable("posts", {
   KOtitle: text().notNull(),
   ENGcontent: text().notNull(),
   KOcontent: text().notNull(),
+  ENGaccentContent: text().notNull(),
+  KOaccentContent: text().notNull(),
   imgPath: text().notNull(),
   imgENGAlt: text().notNull(),
   imgKOAlt: text().notNull(),
@@ -59,12 +62,15 @@ export const postImageImages = pgTable("postImageImages", {
   postId: uuid().references(() => posts.id),
 });
 
-export const postImageImagesRelations = relations(postImageImages, ({ one }) => ({
-  post: one(posts, {
-    fields: [postImageImages.postId],
-    references: [posts.id],
-  }),
-}));
+export const postImageImagesRelations = relations(
+  postImageImages,
+  ({ one }) => ({
+    post: one(posts, {
+      fields: [postImageImages.postId],
+      references: [posts.id],
+    }),
+  })
+);
 
 export const CreateMiceSchema = createInsertSchema(mice)
   .omit({
@@ -81,6 +87,14 @@ export const CreateMiceSchema = createInsertSchema(mice)
       .string()
       .min(1, "Title is required")
       .max(200, "Title cannot be longer than 200 characters"),
+    ENGaccentContent: z
+      .string()
+      .min(1, "Accent content is required")
+      .max(5000, "Accent content cannot be longer than 5000 characters"),
+    KOaccentContent: z
+      .string()
+      .min(1, "Accent content is required")
+      .max(5000, "Accent content cannot be longer than 5000 characters"),
     firstValue: z.coerce
       .number()
       .min(1, "First value is required")
@@ -134,6 +148,14 @@ export const CreatePostSchema = createInsertSchema(posts)
       .string()
       .min(1, "Title is required")
       .max(200, "Title cannot be longer than 200 characters"),
+    ENGaccentContent: z
+      .string()
+      .min(1, "Accent content is required")
+      .max(5000, "Accent content cannot be longer than 5000 characters"),
+    KOaccentContent: z
+      .string()
+      .min(1, "Accent content is required")
+      .max(5000, "Accent content cannot be longer than 5000 characters"),
     ENGcontent: z
       .string()
       .min(1, "Content is required")

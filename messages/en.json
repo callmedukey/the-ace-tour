@@ -237,6 +237,82 @@
     }
   },
 
+  "MiceStandOut": {
+    "title": "Stand Out with The ACE",
+    "button": "Inquire Now",
+    "list": {
+      "list1": {
+        "title": "Exhibition & Booth Expertise",
+        "text": "Let your brand shine on the global stage with our proven expertise."
+      },
+      "list2": {
+        "title": "Local A to Z Service Delivery",
+        "text": "From LA to Las Vegas, we handle everything locally for you."
+      },
+      "list3": {
+        "title": "One-Stop Solution for Event Planning",
+        "text": "Leave the complicated processes to us. Just focus on the results."
+      },
+      "list4": {
+        "title": "Professional Consulting Services",
+        "text": "Entering the NA market doesn't have to be difficult. We'll guide you"
+      }
+    }
+  },
+  "MicePlanAndServices": {
+    "title": "Exhibit & Booth Services",
+    "badge": "Global Exhibition Experts",
+    "button": "Inquire Now",
+    "accentText": "We make CES and other international shows easy for you. Handle the connections and deals - we'll take care of everything else."
+  },
+  "MiceConsulting": {
+    "title": "글로벌 진출 & CES 전문 컨설팅",
+    "badge": "북미 시장 성공의 관문",
+    "button": "Inquire Now",
+    "accent": "북미 시장 성공의 관문",
+
+    "list": {
+      "ces": {
+        "title": "CES Innovation Awards Consulting",
+        "description": "Strategic application preparation, compelling product videos, and targeted press releases to maximize your chances of recognition and visibility."
+      },
+      "market": {
+        "title": "North American Market Entry Strategy",
+        "description": "Customized roadmaps for company registration, product localization, and distribution channel analysis tailored to your specific goals."
+      },
+      "scm": {
+        "title": "North American Supply Chain (SCM) Strategy",
+        "description": "Streamlined logistics, certification guidance, and customs navigation through our established industry relationships."
+      }
+    },
+    "guide": "※ Choose from individual consulting services or bundle them for a complete solution.",
+    "secondBadge": "EXPERIENCE",
+    "secondTitle": "Our Proven Track Record",
+    "secondAccentText": "THE ACE delivers exceptional services that create lasting partnerships with both startups and corporations. Our efficient yet creative approach maximizes outcomes while minimizing client burdens. These numbers represent real businesses achieving global expansion through our support.",
+    "secondList": {
+      "number1": {
+        "number": "127",
+        "title": "Successful Projects",
+        "suffix": ""
+      },
+      "number2": {
+        "number": "1.3",
+        "title": "Total Project Value",
+        "suffix": "M"
+      },
+      "number3": {
+        "number": "1286",
+        "title": "Total Event Participants",
+        "suffix": ""
+      }
+    }
+  },
+  "MiceShowcase": {
+    "title": "Showcasing Our Success",
+    "badge": "PORTIFOLIO",
+    "accentText": "Explore our diverse MICE project portfolio."
+  },
+
   "MiceCTA": {
     "button": "Inquire Now"
   },
