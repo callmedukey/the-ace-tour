@@ -183,7 +183,7 @@ const MiceServicesSetting = ({
       <div className="space-y-6">
         {miceServicesData.length === 0 && (
           <div className="text-gray-500 text-center py-8 border rounded-lg">
-            No MICE services yet. Use the form above to add one, Daddy.
+            No MICE services yet.
           </div>
         )}
         {miceServicesData.map((service) => (
