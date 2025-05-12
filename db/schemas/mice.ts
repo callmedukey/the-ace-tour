@@ -1,5 +1,5 @@
 import { relations } from "drizzle-orm";
-import { integer, pgTable, text, uuid } from "drizzle-orm/pg-core";
+import { pgTable, text, uuid } from "drizzle-orm/pg-core";
 import { z } from "zod";
 import { createInsertSchema } from "drizzle-zod";
 
@@ -11,27 +11,27 @@ export const mice = pgTable("mice", {
   KOaccentText: text().notNull(),
 
   KOSuccessfulProjectsTitle: text().notNull(),
-  KOSuccessfulProjectsNumber: text().notNull(),
+  KOSuccessfulProjectsNumber: text(),
   KOSuccessfulProjectsSuffix: text().notNull(),
 
   ENGsuccessfulProjectsTitle: text().notNull(),
-  ENGsuccessfulProjectsNumber: text().notNull(),
+  ENGsuccessfulProjectsNumber: text(),
   ENGsuccessfulProjectsSuffix: text().notNull(),
 
   KOTotalProjectsValueTitle: text().notNull(),
-  KOTotalProjectsValueNumber: text().notNull(),
+  KOTotalProjectsValueNumber: text(),
   KOTotalProjectsValueSuffix: text().notNull(),
 
   ENGtotalProjectsValueTitle: text().notNull(),
-  ENGtotalProjectsValueNumber: text().notNull(),
+  ENGtotalProjectsValueNumber: text(),
   ENGtotalProjectsValueSuffix: text().notNull(),
 
   KOTotalParticipantsTitle: text().notNull(),
-  KOTotalParticipantsNumber: text().notNull(),
+  KOTotalParticipantsNumber: text(),
   KOTotalParticipantsSuffix: text().notNull(),
 
   ENGtotalParticipantsTitle: text().notNull(),
-  ENGtotalParticipantsNumber: text().notNull(),
+  ENGtotalParticipantsNumber: text(),
   ENGtotalParticipantsSuffix: text().notNull(),
 
   createdAt: text().$defaultFn(() => new Date().toISOString()),
@@ -118,27 +118,27 @@ export const CreateMiceSchema = createInsertSchema(mice)
       .max(200, "Accent text cannot be longer than 200 characters"),
 
     KOSuccessfulProjectsTitle: z.string().min(1, "Title is required"),
-    KOSuccessfulProjectsNumber: z.number().min(1, "Number is required"),
+    KOSuccessfulProjectsNumber: z.string(),
     KOSuccessfulProjectsSuffix: z.string().min(1, "Suffix is required"),
 
     ENGsuccessfulProjectsTitle: z.string().min(1, "Title is required"),
-    ENGsuccessfulProjectsNumber: z.number().min(1, "Number is required"),
+    ENGsuccessfulProjectsNumber: z.string(),
     ENGsuccessfulProjectsSuffix: z.string().min(1, "Suffix is required"),
 
     KOTotalProjectsValueTitle: z.string().min(1, "Title is required"),
-    KOTotalProjectsValueNumber: z.number().min(1, "Number is required"),
+    KOTotalProjectsValueNumber: z.string(),
     KOTotalProjectsValueSuffix: z.string().min(1, "Suffix is required"),
 
     ENGtotalProjectsValueTitle: z.string().min(1, "Title is required"),
-    ENGtotalProjectsValueNumber: z.number().min(1, "Number is required"),
+    ENGtotalProjectsValueNumber: z.string(),
     ENGtotalProjectsValueSuffix: z.string().min(1, "Suffix is required"),
 
     KOTotalParticipantsTitle: z.string().min(1, "Title is required"),
-    KOTotalParticipantsNumber: z.number().min(1, "Number is required"),
+    KOTotalParticipantsNumber: z.string(),
     KOTotalParticipantsSuffix: z.string().min(1, "Suffix is required"),
 
     ENGtotalParticipantsTitle: z.string().min(1, "Title is required"),
-    ENGtotalParticipantsNumber: z.number().min(1, "Number is required"),
+    ENGtotalParticipantsNumber: z.string(),
     ENGtotalParticipantsSuffix: z.string().min(1, "Suffix is required"),
   });
 

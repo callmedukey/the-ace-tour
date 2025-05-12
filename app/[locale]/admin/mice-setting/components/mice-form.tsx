@@ -243,8 +243,6 @@ export function MiceForm({ miceData, isNew = false }: MiceFormProps) {
             <Input
               id="ENGsuccessfulProjectsNumber"
               name="ENGsuccessfulProjectsNumber"
-              type="number"
-              min="0"
               value={formData.ENGsuccessfulProjectsNumber}
               onChange={handleChange}
               required
@@ -257,8 +255,6 @@ export function MiceForm({ miceData, isNew = false }: MiceFormProps) {
             <Input
               id="KOSuccessfulProjectsNumber"
               name="KOSuccessfulProjectsNumber"
-              type="number"
-              min="0"
               value={formData.KOSuccessfulProjectsNumber}
               onChange={handleChange}
               required
@@ -324,8 +320,6 @@ export function MiceForm({ miceData, isNew = false }: MiceFormProps) {
             <Input
               id="ENGtotalProjectsValueNumber"
               name="ENGtotalProjectsValueNumber"
-              type="number"
-              min="0"
               value={formData.ENGtotalProjectsValueNumber}
               onChange={handleChange}
               required
@@ -338,8 +332,6 @@ export function MiceForm({ miceData, isNew = false }: MiceFormProps) {
             <Input
               id="KOTotalProjectsValueNumber"
               name="KOTotalProjectsValueNumber"
-              type="number"
-              min="0"
               value={formData.KOTotalProjectsValueNumber}
               onChange={handleChange}
               required
@@ -405,8 +397,6 @@ export function MiceForm({ miceData, isNew = false }: MiceFormProps) {
             <Input
               id="ENGtotalParticipantsNumber"
               name="ENGtotalParticipantsNumber"
-              type="number"
-              min="0"
               value={formData.ENGtotalParticipantsNumber}
               onChange={handleChange}
               required
@@ -419,8 +409,6 @@ export function MiceForm({ miceData, isNew = false }: MiceFormProps) {
             <Input
               id="KOTotalParticipantsNumber"
               name="KOTotalParticipantsNumber"
-              type="number"
-              min="0"
               value={formData.KOTotalParticipantsNumber}
               onChange={handleChange}
               required
