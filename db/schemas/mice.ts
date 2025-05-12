@@ -11,27 +11,27 @@ export const mice = pgTable("mice", {
   KOaccentText: text().notNull(),
 
   KOSuccessfulProjectsTitle: text().notNull(),
-  KOSuccessfulProjectsNumber: integer().notNull(),
+  KOSuccessfulProjectsNumber: text().notNull(),
   KOSuccessfulProjectsSuffix: text().notNull(),
 
   ENGsuccessfulProjectsTitle: text().notNull(),
-  ENGsuccessfulProjectsNumber: integer().notNull(),
+  ENGsuccessfulProjectsNumber: text().notNull(),
   ENGsuccessfulProjectsSuffix: text().notNull(),
 
   KOTotalProjectsValueTitle: text().notNull(),
-  KOTotalProjectsValueNumber: integer().notNull(),
+  KOTotalProjectsValueNumber: text().notNull(),
   KOTotalProjectsValueSuffix: text().notNull(),
 
   ENGtotalProjectsValueTitle: text().notNull(),
-  ENGtotalProjectsValueNumber: integer().notNull(),
+  ENGtotalProjectsValueNumber: text().notNull(),
   ENGtotalProjectsValueSuffix: text().notNull(),
 
   KOTotalParticipantsTitle: text().notNull(),
-  KOTotalParticipantsNumber: integer().notNull(),
+  KOTotalParticipantsNumber: text().notNull(),
   KOTotalParticipantsSuffix: text().notNull(),
 
   ENGtotalParticipantsTitle: text().notNull(),
-  ENGtotalParticipantsNumber: integer().notNull(),
+  ENGtotalParticipantsNumber: text().notNull(),
   ENGtotalParticipantsSuffix: text().notNull(),
 
   createdAt: text().$defaultFn(() => new Date().toISOString()),

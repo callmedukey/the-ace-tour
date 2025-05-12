@@ -16,27 +16,27 @@ interface MiceFormProps {
     KOaccentText: string;
 
     KOSuccessfulProjectsTitle: string;
-    KOSuccessfulProjectsNumber: number;
+    KOSuccessfulProjectsNumber: string;
     KOSuccessfulProjectsSuffix: string;
 
     ENGsuccessfulProjectsTitle: string;
-    ENGsuccessfulProjectsNumber: number;
+    ENGsuccessfulProjectsNumber: string;
     ENGsuccessfulProjectsSuffix: string;
 
     KOTotalProjectsValueTitle: string;
-    KOTotalProjectsValueNumber: number;
+    KOTotalProjectsValueNumber: string;
     KOTotalProjectsValueSuffix: string;
 
     ENGtotalProjectsValueTitle: string;
-    ENGtotalProjectsValueNumber: number;
+    ENGtotalProjectsValueNumber: string;
     ENGtotalProjectsValueSuffix: string;
 
     KOTotalParticipantsTitle: string;
-    KOTotalParticipantsNumber: number;
+    KOTotalParticipantsNumber: string;
     KOTotalParticipantsSuffix: string;
 
     ENGtotalParticipantsTitle: string;
-    ENGtotalParticipantsNumber: number;
+    ENGtotalParticipantsNumber: string;
     ENGtotalParticipantsSuffix: string;
   };
   isNew?: boolean;
@@ -51,27 +51,27 @@ export function MiceForm({ miceData, isNew = false }: MiceFormProps) {
     KOaccentText: miceData?.KOaccentText || "",
 
     KOSuccessfulProjectsTitle: miceData?.KOSuccessfulProjectsTitle || "",
-    KOSuccessfulProjectsNumber: miceData?.KOSuccessfulProjectsNumber || 0,
+    KOSuccessfulProjectsNumber: miceData?.KOSuccessfulProjectsNumber || "",
     KOSuccessfulProjectsSuffix: miceData?.KOSuccessfulProjectsSuffix || "",
 
     ENGsuccessfulProjectsTitle: miceData?.ENGsuccessfulProjectsTitle || "",
-    ENGsuccessfulProjectsNumber: miceData?.ENGsuccessfulProjectsNumber || 0,
+    ENGsuccessfulProjectsNumber: miceData?.ENGsuccessfulProjectsNumber || "",
     ENGsuccessfulProjectsSuffix: miceData?.ENGsuccessfulProjectsSuffix || "",
 
     KOTotalProjectsValueTitle: miceData?.KOTotalProjectsValueTitle || "",
-    KOTotalProjectsValueNumber: miceData?.KOTotalProjectsValueNumber || 0,
+    KOTotalProjectsValueNumber: miceData?.KOTotalProjectsValueNumber || "",
     KOTotalProjectsValueSuffix: miceData?.KOTotalProjectsValueSuffix || "",
 
     ENGtotalProjectsValueTitle: miceData?.ENGtotalProjectsValueTitle || "",
-    ENGtotalProjectsValueNumber: miceData?.ENGtotalProjectsValueNumber || 0,
+    ENGtotalProjectsValueNumber: miceData?.ENGtotalProjectsValueNumber || "",
     ENGtotalProjectsValueSuffix: miceData?.ENGtotalProjectsValueSuffix || "",
 
     KOTotalParticipantsTitle: miceData?.KOTotalParticipantsTitle || "",
-    KOTotalParticipantsNumber: miceData?.KOTotalParticipantsNumber || 0,
+    KOTotalParticipantsNumber: miceData?.KOTotalParticipantsNumber || "",
     KOTotalParticipantsSuffix: miceData?.KOTotalParticipantsSuffix || "",
 
     ENGtotalParticipantsTitle: miceData?.ENGtotalParticipantsTitle || "",
-    ENGtotalParticipantsNumber: miceData?.ENGtotalParticipantsNumber || 0,
+    ENGtotalParticipantsNumber: miceData?.ENGtotalParticipantsNumber || "",
     ENGtotalParticipantsSuffix: miceData?.ENGtotalParticipantsSuffix || "",
   });
 
@@ -118,27 +118,27 @@ export function MiceForm({ miceData, isNew = false }: MiceFormProps) {
             KOaccentText: "",
 
             KOSuccessfulProjectsTitle: "",
-            KOSuccessfulProjectsNumber: 0,
+            KOSuccessfulProjectsNumber: "",
             KOSuccessfulProjectsSuffix: "",
 
             ENGsuccessfulProjectsTitle: "",
-            ENGsuccessfulProjectsNumber: 0,
+            ENGsuccessfulProjectsNumber: "",
             ENGsuccessfulProjectsSuffix: "",
 
             KOTotalProjectsValueTitle: "",
-            KOTotalProjectsValueNumber: 0,
+            KOTotalProjectsValueNumber: "",
             KOTotalProjectsValueSuffix: "",
 
             ENGtotalProjectsValueTitle: "",
-            ENGtotalProjectsValueNumber: 0,
+            ENGtotalProjectsValueNumber: "",
             ENGtotalProjectsValueSuffix: "",
 
             KOTotalParticipantsTitle: "",
-            KOTotalParticipantsNumber: 0,
+            KOTotalParticipantsNumber: "",
             KOTotalParticipantsSuffix: "",
 
             ENGtotalParticipantsTitle: "",
-            ENGtotalParticipantsNumber: 0,
+            ENGtotalParticipantsNumber: "",
             ENGtotalParticipantsSuffix: "",
           });
         }

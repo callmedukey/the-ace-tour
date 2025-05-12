@@ -31,27 +31,27 @@ export async function updateMice(
     KOaccentText: string;
 
     KOSuccessfulProjectsTitle: string;
-    KOSuccessfulProjectsNumber: number;
+    KOSuccessfulProjectsNumber: string;
     KOSuccessfulProjectsSuffix: string;
 
     ENGsuccessfulProjectsTitle: string;
-    ENGsuccessfulProjectsNumber: number;
+    ENGsuccessfulProjectsNumber: string;
     ENGsuccessfulProjectsSuffix: string;
 
     KOTotalProjectsValueTitle: string;
-    KOTotalProjectsValueNumber: number;
+    KOTotalProjectsValueNumber: string;
     KOTotalProjectsValueSuffix: string;
 
     ENGtotalProjectsValueTitle: string;
-    ENGtotalProjectsValueNumber: number;
+    ENGtotalProjectsValueNumber: string;
     ENGtotalProjectsValueSuffix: string;
 
     KOTotalParticipantsTitle: string;
-    KOTotalParticipantsNumber: number;
+    KOTotalParticipantsNumber: string;
     KOTotalParticipantsSuffix: string;
 
     ENGtotalParticipantsTitle: string;
-    ENGtotalParticipantsNumber: number;
+    ENGtotalParticipantsNumber: string;
     ENGtotalParticipantsSuffix: string;
   }
 ): Promise<MiceResult> {
@@ -88,27 +88,27 @@ export async function createMice(miceData: {
   KOaccentText: string;
 
   KOSuccessfulProjectsTitle: string;
-  KOSuccessfulProjectsNumber: number;
+  KOSuccessfulProjectsNumber: string;
   KOSuccessfulProjectsSuffix: string;
 
   ENGsuccessfulProjectsTitle: string;
-  ENGsuccessfulProjectsNumber: number;
+  ENGsuccessfulProjectsNumber: string;
   ENGsuccessfulProjectsSuffix: string;
 
   KOTotalProjectsValueTitle: string;
-  KOTotalProjectsValueNumber: number;
+  KOTotalProjectsValueNumber: string;
   KOTotalProjectsValueSuffix: string;
 
   ENGtotalProjectsValueTitle: string;
-  ENGtotalProjectsValueNumber: number;
+  ENGtotalProjectsValueNumber: string;
   ENGtotalProjectsValueSuffix: string;
 
   KOTotalParticipantsTitle: string;
-  KOTotalParticipantsNumber: number;
+  KOTotalParticipantsNumber: string;
   KOTotalParticipantsSuffix: string;
 
   ENGtotalParticipantsTitle: string;
-  ENGtotalParticipantsNumber: number;
+  ENGtotalParticipantsNumber: string;
   ENGtotalParticipantsSuffix: string;
 }): Promise<MiceResult> {
   try {
