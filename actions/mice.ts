@@ -1,7 +1,7 @@
 "use server";
 
 import { getDB } from "@/db";
-import { mice, posts, postImageImages } from "@/db/schemas/mice";
+import { mice, posts, postImageImages, miceServices } from "@/db/schemas/mice";
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { writeFile, unlink } from "fs/promises";
@@ -681,6 +681,110 @@ export async function getMiceWithPosts() {
       success: false,
       error: error instanceof Error ? error.message : "Unknown error",
       mice: [],
+    };
+  }
+}
+
+// Create a new MICE service
+export async function createMiceService(serviceData: {
+  ENGtitle: string;
+  KOtitle: string;
+  ENGcontent: string;
+  KOcontent: string;
+}): Promise<MiceResult> {
+  try {
+    const db = await getDB();
+
+    await db.insert(miceServices).values({
+      ...serviceData,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    });
+
+    revalidatePath("/[locale]/admin/mice-setting", "page");
+    revalidatePath("/[locale]/mice-solutions", "page");
+
+    return { success: true };
+  } catch (error) {
+    console.error("Error creating MICE service:", error);
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : "Unknown error",
+    };
+  }
+}
+
+// Update a MICE service
+export async function updateMiceService(
+  id: string,
+  serviceData: {
+    ENGtitle: string;
+    KOtitle: string;
+    ENGcontent: string;
+    KOcontent: string;
+  }
+): Promise<MiceResult> {
+  try {
+    const db = await getDB();
+
+    await db
+      .update(miceServices)
+      .set({
+        ...serviceData,
+        updatedAt: new Date().toISOString(),
+      })
+      .where(eq(miceServices.id, id));
+
+    revalidatePath("/[locale]/admin/mice-setting", "page");
+    revalidatePath("/[locale]/mice-solutions", "page");
+
+    return { success: true };
+  } catch (error) {
+    console.error("Error updating MICE service:", error);
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : "Unknown error",
+    };
+  }
+}
+
+// Delete a MICE service
+export async function deleteMiceService(id: string): Promise<MiceResult> {
+  try {
+    const db = await getDB();
+
+    await db.delete(miceServices).where(eq(miceServices.id, id));
+
+    revalidatePath("/[locale]/admin/mice-setting", "page");
+    revalidatePath("/[locale]/mice-solutions", "page");
+
+    return { success: true };
+  } catch (error) {
+    console.error("Error deleting MICE service:", error);
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : "Unknown error",
+    };
+  }
+}
+
+// Get all MICE services
+export async function getMiceServices() {
+  try {
+    const db = await getDB();
+    const allServices = await db.query.miceServices.findMany({
+      orderBy: (miceServices, { desc }) => [desc(miceServices.createdAt)],
+    });
+    return {
+      success: true,
+      miceServices: allServices,
+    };
+  } catch (error) {
+    console.error("Error fetching MICE services:", error);
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : "Unknown error",
+      miceServices: [],
     };
   }
 }

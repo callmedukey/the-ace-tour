@@ -29,12 +29,17 @@ async function fetchData() {
               imgPath: true,
               imgENGAlt: true,
               imgKOAlt: true,
-            }
-          }
-        }
+            },
+          },
+        },
       },
     },
   });
 }
 
 export const getMiceData = cache(fetchData);
+
+export const getMiceServicesData = cache(async () => {
+  const db = await getDB();
+  return await db.query.miceServices.findMany();
+});

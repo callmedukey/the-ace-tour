@@ -3,9 +3,12 @@ import React from "react";
 import MiceServicesList from "./mice-services-list";
 import { Link } from "@/i18n/navigation";
 import * as motion from "motion/react-client";
-
+import { getMiceServicesData } from "../queries/getMiceData";
+import { getLocale } from "next-intl/server";
 const MiceServices = async () => {
   const t = await getTranslations("MicePlanAndServices");
+  const miceServicesData = await getMiceServicesData();
+  const locale = await getLocale();
   return (
     <section className="py-16 bg-[#1976D2]/10 rounded-2xl">
       <motion.div
@@ -35,7 +38,7 @@ const MiceServices = async () => {
       >
         {t("accentText")}
       </motion.p>
-      <MiceServicesList />
+      <MiceServicesList miceServicesData={miceServicesData} locale={locale} />
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}

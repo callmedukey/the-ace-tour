@@ -9,6 +9,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import MiceServicesSetting from "./components/mice-services-setting";
 
 export const dynamic = "force-dynamic";
 
@@ -25,6 +26,8 @@ const MiceSettingPage = async () => {
       },
     },
   });
+
+  const miceServicesEntry = await db.query.miceServices.findMany();
 
   const hasMiceEntry = !!miceEntry;
   const posts = miceEntry?.posts || [];
@@ -47,6 +50,7 @@ const MiceSettingPage = async () => {
               {hasMiceEntry ? "MICE Solution Settings" : "Create MICE Solution"}
             </h2>
             <MiceForm miceData={miceEntry} isNew={!hasMiceEntry} />
+            <MiceServicesSetting miceServicesData={miceServicesEntry} />
           </div>
         </TabsContent>
         <TabsContent value="posts">

@@ -52,6 +52,8 @@ export const miceServices = pgTable("miceServices", {
   updatedAt: text().$onUpdateFn(() => new Date().toISOString()),
 });
 
+export type MiceService = typeof miceServices.$inferSelect;
+
 export const posts = pgTable("posts", {
   id: uuid().primaryKey().defaultRandom(),
   ENGtitle: text().notNull(),
