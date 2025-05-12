@@ -18,15 +18,29 @@ interface MiceCardProps {
     id: string;
     ENGtitle: string;
     KOtitle: string;
-    firstValue: number;
-    firstValueENGText: string;
-    firstValueKOText: string;
-    secondValue: number;
-    secondValueENGText: string;
-    secondValueKOText: string;
-    thirdValue: number;
-    thirdValueENGText: string;
-    thirdValueKOText: string;
+    ENGaccentText: string;
+    KOaccentText: string;
+    KOSuccessfulProjectsTitle: string;
+    KOSuccessfulProjectsNumber: number;
+    KOSuccessfulProjectsSuffix: string;
+    KOTotalProjectsValueTitle: string;
+    KOTotalProjectsValueNumber: number;
+    KOTotalProjectsValueSuffix: string;
+    KOTotalParticipantsTitle: string;
+    KOTotalParticipantsNumber: number;
+    KOTotalParticipantsSuffix: string;
+    KOTotalParticipantsContent: string;
+    ENGsuccessfulProjectsTitle: string;
+    ENGsuccessfulProjectsNumber: number;
+    ENGsuccessfulProjectsSuffix: string;
+    ENGtotalProjectsValueTitle: string;
+    ENGtotalProjectsValueNumber: number;
+    ENGtotalProjectsValueSuffix: string;
+    ENGtotalParticipantsTitle: string;
+    ENGtotalParticipantsNumber: number;
+    ENGtotalParticipantsSuffix: string;
+    ENGtotalParticipantsContent: string;
+
     posts: {
       id: string;
       ENGtitle: string;
