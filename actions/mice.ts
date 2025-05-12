@@ -27,15 +27,32 @@ export async function updateMice(
   miceData: {
     ENGtitle: string;
     KOtitle: string;
-    firstValue: number;
-    firstValueENGText: string;
-    firstValueKOText: string;
-    secondValue: number;
-    secondValueENGText: string;
-    secondValueKOText: string;
-    thirdValue: number;
-    thirdValueENGText: string;
-    thirdValueKOText: string;
+    ENGaccentText: string;
+    KOaccentText: string;
+
+    KOSuccessfulProjectsTitle: string;
+    KOSuccessfulProjectsNumber: number;
+    KOSuccessfulProjectsSuffix: string;
+
+    ENGsuccessfulProjectsTitle: string;
+    ENGsuccessfulProjectsNumber: number;
+    ENGsuccessfulProjectsSuffix: string;
+
+    KOTotalProjectsValueTitle: string;
+    KOTotalProjectsValueNumber: number;
+    KOTotalProjectsValueSuffix: string;
+
+    ENGtotalProjectsValueTitle: string;
+    ENGtotalProjectsValueNumber: number;
+    ENGtotalProjectsValueSuffix: string;
+
+    KOTotalParticipantsTitle: string;
+    KOTotalParticipantsNumber: number;
+    KOTotalParticipantsSuffix: string;
+
+    ENGtotalParticipantsTitle: string;
+    ENGtotalParticipantsNumber: number;
+    ENGtotalParticipantsSuffix: string;
   }
 ): Promise<MiceResult> {
   try {
@@ -67,15 +84,32 @@ export async function updateMice(
 export async function createMice(miceData: {
   ENGtitle: string;
   KOtitle: string;
-  firstValue: number;
-  firstValueENGText: string;
-  firstValueKOText: string;
-  secondValue: number;
-  secondValueENGText: string;
-  secondValueKOText: string;
-  thirdValue: number;
-  thirdValueENGText: string;
-  thirdValueKOText: string;
+  ENGaccentText: string;
+  KOaccentText: string;
+
+  KOSuccessfulProjectsTitle: string;
+  KOSuccessfulProjectsNumber: number;
+  KOSuccessfulProjectsSuffix: string;
+
+  ENGsuccessfulProjectsTitle: string;
+  ENGsuccessfulProjectsNumber: number;
+  ENGsuccessfulProjectsSuffix: string;
+
+  KOTotalProjectsValueTitle: string;
+  KOTotalProjectsValueNumber: number;
+  KOTotalProjectsValueSuffix: string;
+
+  ENGtotalProjectsValueTitle: string;
+  ENGtotalProjectsValueNumber: number;
+  ENGtotalProjectsValueSuffix: string;
+
+  KOTotalParticipantsTitle: string;
+  KOTotalParticipantsNumber: number;
+  KOTotalParticipantsSuffix: string;
+
+  ENGtotalParticipantsTitle: string;
+  ENGtotalParticipantsNumber: number;
+  ENGtotalParticipantsSuffix: string;
 }): Promise<MiceResult> {
   try {
     const db = await getDB();
@@ -187,6 +221,8 @@ export async function createPost(formData: FormData): Promise<MiceResult> {
     const KOcontent = formData.get("KOcontent") as string;
     const mainENGContent = formData.get("mainENGContent") as string;
     const mainKOContent = formData.get("mainKOContent") as string;
+    const ENGaccentContent = formData.get("ENGaccentContent") as string;
+    const KOaccentContent = formData.get("KOaccentContent") as string;
     const imgENGAlt = formData.get("imgENGAlt") as string;
     const imgKOAlt = formData.get("imgKOAlt") as string;
     const file = formData.get("file") as File;
@@ -204,6 +240,8 @@ export async function createPost(formData: FormData): Promise<MiceResult> {
       !KOcontent ||
       !mainENGContent ||
       !mainKOContent ||
+      !ENGaccentContent ||
+      !KOaccentContent ||
       !imgENGAlt ||
       !imgKOAlt ||
       !file
@@ -245,6 +283,8 @@ export async function createPost(formData: FormData): Promise<MiceResult> {
         KOtitle,
         ENGcontent,
         KOcontent,
+        ENGaccentContent,
+        KOaccentContent,
         mainENGContent,
         mainKOContent,
         imgPath: imagePath,

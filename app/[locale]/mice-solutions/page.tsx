@@ -1,7 +1,5 @@
 import { MiceHero } from "./components/mice-hero";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { MiceCards } from "./components/mice-cards";
-import { Link } from "@/i18n/navigation";
 import { Metadata, Viewport } from "next";
 import MiceStandOut from "./components/mice-stand-out";
 import MiceServices from "./components/mice-services";
@@ -24,6 +22,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   setRequestLocale(locale);
+
   const t = await getTranslations({
     locale,
     namespace: "Metadata.MiceSolutions",
@@ -52,7 +51,6 @@ const MICEPage = async ({
   params: Promise<{ locale: string }>;
 }) => {
   setRequestLocale((await params).locale);
-  const t = await getTranslations("MiceCTA");
   return (
     <main className="">
       <MiceHero />

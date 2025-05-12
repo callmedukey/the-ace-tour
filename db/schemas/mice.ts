@@ -7,15 +7,32 @@ export const mice = pgTable("mice", {
   id: uuid().primaryKey().defaultRandom(),
   ENGtitle: text().notNull(),
   KOtitle: text().notNull(),
-  firstValue: integer().notNull(),
-  firstValueENGText: text().notNull(),
-  firstValueKOText: text().notNull(),
-  secondValue: integer().notNull(),
-  secondValueENGText: text().notNull(),
-  secondValueKOText: text().notNull(),
-  thirdValue: integer().notNull(),
-  thirdValueENGText: text().notNull(),
-  thirdValueKOText: text().notNull(),
+  ENGaccentText: text().notNull(),
+  KOaccentText: text().notNull(),
+
+  KOSuccessfulProjectsTitle: text().notNull(),
+  KOSuccessfulProjectsNumber: integer().notNull(),
+  KOSuccessfulProjectsSuffix: text().notNull(),
+
+  ENGsuccessfulProjectsTitle: text().notNull(),
+  ENGsuccessfulProjectsNumber: integer().notNull(),
+  ENGsuccessfulProjectsSuffix: text().notNull(),
+
+  KOTotalProjectsValueTitle: text().notNull(),
+  KOTotalProjectsValueNumber: integer().notNull(),
+  KOTotalProjectsValueSuffix: text().notNull(),
+
+  ENGtotalProjectsValueTitle: text().notNull(),
+  ENGtotalProjectsValueNumber: integer().notNull(),
+  ENGtotalProjectsValueSuffix: text().notNull(),
+
+  KOTotalParticipantsTitle: text().notNull(),
+  KOTotalParticipantsNumber: integer().notNull(),
+  KOTotalParticipantsSuffix: text().notNull(),
+
+  ENGtotalParticipantsTitle: text().notNull(),
+  ENGtotalParticipantsNumber: integer().notNull(),
+  ENGtotalParticipantsSuffix: text().notNull(),
 
   createdAt: text().$defaultFn(() => new Date().toISOString()),
   updatedAt: text().$onUpdateFn(() => new Date().toISOString()),
@@ -24,6 +41,16 @@ export const mice = pgTable("mice", {
 export const miceRelations = relations(mice, ({ many }) => ({
   posts: many(posts),
 }));
+
+export const miceServices = pgTable("miceServices", {
+  id: uuid().primaryKey().defaultRandom(),
+  ENGtitle: text().notNull(),
+  KOtitle: text().notNull(),
+  ENGcontent: text().notNull(),
+  KOcontent: text().notNull(),
+  createdAt: text().$defaultFn(() => new Date().toISOString()),
+  updatedAt: text().$onUpdateFn(() => new Date().toISOString()),
+});
 
 export const posts = pgTable("posts", {
   id: uuid().primaryKey().defaultRandom(),
@@ -79,58 +106,40 @@ export const CreateMiceSchema = createInsertSchema(mice)
     updatedAt: true,
   })
   .extend({
-    ENGtitle: z
+    ENGtitle: z.string().min(1, "Title is required"),
+    KOtitle: z.string().min(1, "Title is required"),
+    ENGaccentText: z
       .string()
-      .min(1, "Title is required")
-      .max(200, "Title cannot be longer than 200 characters"),
-    KOtitle: z
+      .min(1, "Accent text is required")
+      .max(200, "Accent text cannot be longer than 200 characters"),
+    KOaccentText: z
       .string()
-      .min(1, "Title is required")
-      .max(200, "Title cannot be longer than 200 characters"),
-    ENGaccentContent: z
-      .string()
-      .min(1, "Accent content is required")
-      .max(5000, "Accent content cannot be longer than 5000 characters"),
-    KOaccentContent: z
-      .string()
-      .min(1, "Accent content is required")
-      .max(5000, "Accent content cannot be longer than 5000 characters"),
-    firstValue: z.coerce
-      .number()
-      .min(1, "First value is required")
-      .max(100, "First value cannot be greater than 100"),
-    secondValue: z.coerce
-      .number()
-      .min(1, "First value is required")
-      .max(100, "First value cannot be greater than 100"),
-    thirdValue: z.coerce
-      .number()
-      .min(1, "First value is required")
-      .max(100, "First value cannot be greater than 100"),
-    firstValueENGText: z
-      .string()
-      .min(1, "First value text is required")
-      .max(200, "First value text cannot be longer than 200 characters"),
-    firstValueKOText: z
-      .string()
-      .min(1, "First value text is required")
-      .max(200, "First value text cannot be longer than 200 characters"),
-    secondValueKOText: z
-      .string()
-      .min(1, "Second value text is required")
-      .max(200, "Second value text cannot be longer than 200 characters"),
-    secondValueENGText: z
-      .string()
-      .min(1, "Second value text is required")
-      .max(200, "Second value text cannot be longer than 200 characters"),
-    thirdValueKOText: z
-      .string()
-      .min(1, "Third value text is required")
-      .max(200, "Third value text cannot be longer than 200 characters"),
-    thirdValueENGText: z
-      .string()
-      .min(1, "Third value text is required")
-      .max(200, "Third value text cannot be longer than 200 characters"),
+      .min(1, "Accent text is required")
+      .max(200, "Accent text cannot be longer than 200 characters"),
+
+    KOSuccessfulProjectsTitle: z.string().min(1, "Title is required"),
+    KOSuccessfulProjectsNumber: z.number().min(1, "Number is required"),
+    KOSuccessfulProjectsSuffix: z.string().min(1, "Suffix is required"),
+
+    ENGsuccessfulProjectsTitle: z.string().min(1, "Title is required"),
+    ENGsuccessfulProjectsNumber: z.number().min(1, "Number is required"),
+    ENGsuccessfulProjectsSuffix: z.string().min(1, "Suffix is required"),
+
+    KOTotalProjectsValueTitle: z.string().min(1, "Title is required"),
+    KOTotalProjectsValueNumber: z.number().min(1, "Number is required"),
+    KOTotalProjectsValueSuffix: z.string().min(1, "Suffix is required"),
+
+    ENGtotalProjectsValueTitle: z.string().min(1, "Title is required"),
+    ENGtotalProjectsValueNumber: z.number().min(1, "Number is required"),
+    ENGtotalProjectsValueSuffix: z.string().min(1, "Suffix is required"),
+
+    KOTotalParticipantsTitle: z.string().min(1, "Title is required"),
+    KOTotalParticipantsNumber: z.number().min(1, "Number is required"),
+    KOTotalParticipantsSuffix: z.string().min(1, "Suffix is required"),
+
+    ENGtotalParticipantsTitle: z.string().min(1, "Title is required"),
+    ENGtotalParticipantsNumber: z.number().min(1, "Number is required"),
+    ENGtotalParticipantsSuffix: z.string().min(1, "Suffix is required"),
   });
 
 export const CreatePostSchema = createInsertSchema(posts)

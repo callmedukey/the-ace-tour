@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
-
+import * as motion from "motion/react-client";
 import FirstImage from "@/public/mice-solutions/business-icon.svg";
 import SecondImage from "@/public/mice-solutions/send.svg";
 import ThirdImage from "@/public/mice-solutions/check-list.svg";
@@ -35,11 +35,26 @@ const MiceStandOut = async () => {
   ];
   return (
     <section className="py-16 max-w-screen-2xl mx-auto px-4 2xl:px-0">
-      <h2 className="text-4xl font-bold">{t("title")}</h2>
+      <motion.h2
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="text-4xl font-bold"
+      >
+        {t("title")}
+      </motion.h2>
       <div className="grid lg:grid-cols-2 gap-8">
         <ul className="grid grid-cols-2 gap-4 py-16 order-2 lg:order-1">
           {list.map((item) => (
-            <li key={item.title} className="flex flex-col gap-4">
+            <motion.li
+              key={item.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="flex flex-col gap-4"
+            >
               <Image
                 src={item.image}
                 alt={item.title}
@@ -48,19 +63,31 @@ const MiceStandOut = async () => {
               />
               <h3 className="text-2xl font-bold">{item.title}</h3>
               <p className="text-lg">{item.text}</p>
-            </li>
+            </motion.li>
           ))}
         </ul>
-        <div className="relative order-1 lg:order-2">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="relative order-1 lg:order-2"
+        >
           <Image
             src={MainImage}
             alt="Main Image"
             className="w-full h-full object-cover mt-8 lg:mt-0"
             quality={100}
           />
-        </div>
+        </motion.div>
       </div>
-      <div className="flex w-full items-center">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="flex w-full items-center"
+      >
         <Link
           href="/support"
           className="group inline-flex h-12 w-[11rem] items-center justify-between rounded-[10px] bg-highlight-blue hover:bg-highlight-blue/80 pl-5 pr-1 text-white transition-all"
@@ -85,7 +112,7 @@ const MiceStandOut = async () => {
             </svg>
           </div>
         </Link>
-      </div>
+      </motion.div>
     </section>
   );
 };

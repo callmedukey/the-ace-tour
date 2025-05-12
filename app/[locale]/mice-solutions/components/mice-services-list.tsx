@@ -48,8 +48,13 @@ const MiceServicesList = () => {
   };
 
   return (
-    <div className="grid sm:grid-cols-8 max-w-screen-xl mt-16 mx-auto rounded-2xl overflow-clip border-[#D4D4D4] border">
-      {/* List items carousel for small screens */}
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      className="grid sm:grid-cols-8 max-w-screen-xl mt-16 mx-auto rounded-2xl overflow-clip border-[#D4D4D4] border"
+    >
       <div className="sm:hidden col-span-full bg-[#F5F5F5] p-4 border-b border-[#D4D4D4] flex items-center justify-between">
         <button
           onClick={handlePrev}
@@ -70,7 +75,6 @@ const MiceServicesList = () => {
         </button>
       </div>
 
-      {/* List items for medium screens and up */}
       <ul className={cn("col-span-3 hidden sm:block")}>
         {list.map((item, i) => (
           <li
@@ -102,7 +106,7 @@ const MiceServicesList = () => {
           </motion.div>
         </AnimatePresence>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
