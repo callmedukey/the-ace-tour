@@ -16,27 +16,27 @@ interface MiceFormProps {
     KOaccentText: string;
 
     KOSuccessfulProjectsTitle: string;
-    KOSuccessfulProjectsNumber: string;
+    KOSuccessfulProjectsNumber?: string | null;
     KOSuccessfulProjectsSuffix: string;
 
     ENGsuccessfulProjectsTitle: string;
-    ENGsuccessfulProjectsNumber: string;
+    ENGsuccessfulProjectsNumber?: string | null;
     ENGsuccessfulProjectsSuffix: string;
 
     KOTotalProjectsValueTitle: string;
-    KOTotalProjectsValueNumber: string;
+    KOTotalProjectsValueNumber?: string | null;
     KOTotalProjectsValueSuffix: string;
 
     ENGtotalProjectsValueTitle: string;
-    ENGtotalProjectsValueNumber: string;
+    ENGtotalProjectsValueNumber?: string | null;
     ENGtotalProjectsValueSuffix: string;
 
     KOTotalParticipantsTitle: string;
-    KOTotalParticipantsNumber: string;
+    KOTotalParticipantsNumber?: string | null;
     KOTotalParticipantsSuffix: string;
 
     ENGtotalParticipantsTitle: string;
-    ENGtotalParticipantsNumber: string;
+    ENGtotalParticipantsNumber?: string | null;
     ENGtotalParticipantsSuffix: string;
   };
   isNew?: boolean;
