@@ -154,13 +154,15 @@ const MiceConsulting = async () => {
             transition={{ duration: 0.5 }}
             className="flex flex-col items-center bg-[#1B365D] text-white rounded-3xl rounded-br-none p-16"
           >
-            <span className="text-2xl font-bold">
+            <span className="text-2xl font-bold flex items-end">
               <span className="text-7xl">
                 <NumberTicker value={parseInt(item.number.toString())} />
               </span>
               <span className="text-4xl">{item.suffix}</span>
             </span>
-            <span className="text-2xl font-bold mt-2">{item.title}</span>
+            <span className="text-2xl font-bold mt-2 text-center">
+              {item.title}
+            </span>
           </motion.li>
         ))}
       </ul>
